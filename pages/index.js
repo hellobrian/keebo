@@ -1,40 +1,7 @@
 import Head from "next/head";
-import { useQuery } from "react-query";
-
 import { request, gql } from "graphql-request";
 
-const endpoint = "http://64.227.84.151/graphql";
-
-function useKeyboardsQuery() {
-  return useQuery("keyboards", async () => {
-    const res = await request(
-      endpoint,
-      gql`
-        query {
-          keyboards {
-            id
-            name
-            hotswap
-          }
-        }
-      `
-    );
-
-    return res;
-  });
-}
-
-function App() {
-  const { status, data, error } = useKeyboardsQuery();
-
-  if (status === "loading") {
-    return <span>Loading...</span>;
-  }
-
-  if (status === "error") {
-    return <span>Error: {error.message}</span>;
-  }
-
+export default function Home({ data }) {
   return (
     <div>
       <Head>
@@ -43,9 +10,7 @@ function App() {
       </Head>
 
       <main>
-        <h1>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+        <h1>Keyboards</h1>
         <div>
           {data.keyboards.map((keyboard) => (
             <span key={keyboard.id}>
@@ -58,6 +23,22 @@ function App() {
   );
 }
 
-export default function Home() {
-  return <App></App>;
+export async function getStaticProps() {
+  const endpoint = "http://64.227.84.151/graphql";
+  const query = gql`
+    query {
+      keyboards {
+        id
+        name
+        hotswap
+      }
+    }
+  `;
+  const data = await request(endpoint, query);
+
+  return {
+    props: {
+      data,
+    },
+  };
 }

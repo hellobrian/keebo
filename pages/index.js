@@ -11,20 +11,20 @@ export default function Home({ data }) {
 
       <main>
         <h1>Keyboards</h1>
-        <div>
+        <ul>
           {data.keyboards.map((keyboard) => (
-            <span key={keyboard.id}>
+            <li key={keyboard.id}>
               {keyboard.name} - {keyboard.hotswap ? "hotswap" : "soldered"}
-            </span>
+            </li>
           ))}
-        </div>
+        </ul>
       </main>
     </div>
   );
 }
 
 export async function getStaticProps() {
-  const endpoint = "http://64.227.84.151/graphql";
+  const endpoint = process.env.GRAPHQL_ENDPOINT;
   const query = gql`
     query {
       keyboards {

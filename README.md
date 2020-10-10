@@ -1,4 +1,4 @@
-# Keyboards
+# Keebs
 
 Site for documenting and managing keyboards.
 

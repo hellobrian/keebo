@@ -23,7 +23,7 @@ export default function Home({ data }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const endpoint = process.env.GRAPHQL_ENDPOINT;
   const query = gql`
     query {

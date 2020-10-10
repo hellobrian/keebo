@@ -5,12 +5,12 @@ export default function Home({ data }) {
   return (
     <div>
       <Head>
-        <title>Create Next App</title>
+        <title>Keebs</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main>
-        <h1>Keyboards</h1>
+        <h1>Keebs</h1>
         <ul>
           {data.keyboards.map((keyboard) => (
             <li key={keyboard.id}>

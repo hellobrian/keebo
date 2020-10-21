@@ -1,0 +1,23 @@
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-gap: 20px;
+  background: var(--fg);
+  height: 50px;
+  padding: 0 32px;
+  align-items: center;
+}
+
+.link {
+  font-weight: 700;
+  font-size: 20px;
+  padding: 0;
+  margin: 0;
+}
+
+.isActive {
+  background-repeat: no-repeat;
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-size: 100% 4px;
+  background-position: 0 105%;
+}

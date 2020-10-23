@@ -2,7 +2,6 @@
   display: grid;
   grid-gap: 20px;
   grid-template-columns: 1fr;
-  grid-template-rows: 50px 1fr;
   grid-template-areas:
     "header"
     "content";
@@ -14,6 +13,12 @@
   width: 100%;
   grid-area: header;
   padding: 0 32px;
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 0;
+  }
 }
 
 .sidebar {

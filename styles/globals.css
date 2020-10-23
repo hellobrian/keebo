@@ -1,5 +1,6 @@
 :root {
   --white: #fff;
+  --black: #000;
   --blue: #2b3595;
   --blue--dark: #182952;
   --pink: #e14594;
@@ -8,6 +9,7 @@
   --fg: var(--blue);
   --bg: var(--blue--dark);
   --text: var(--white);
+  --text-inverse: var(--black);
   --accent: var(--pink);
   --cta: var(--purple);
 

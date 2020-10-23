@@ -5,6 +5,7 @@ import { Layout } from "../components/layout";
 export default function Home({ data }) {
   return (
     <Layout pageTitle="keyboards">
+      <h1>Keyboards</h1>
       <pre>{JSON.stringify(data, null, 2)}</pre>
     </Layout>
   );

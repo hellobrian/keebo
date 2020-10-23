@@ -1,5 +1,6 @@
-import { useReducer, useContext, createContext } from "react";
+import { useReducer, useContext, useEffect, createContext } from "react";
 import { NavLink } from "./nav-link";
+import { useWindowWidth } from "../hooks/useWindowWidth";
 import styles from "./header.module.css";
 
 const MenuContext = createContext(null);
@@ -53,50 +54,42 @@ function MenuButton({ id = "menu-list" }) {
   );
 }
 
-function MenuList({ children, id = "menu-list" }) {
-  const { isOpen } = useContext(MenuContext);
-
+function MenuList({ id = "menu-list" }) {
   return (
-    <ul
-      id={id}
-      className={styles.menuList}
-      style={{
-        visibility: isOpen ? "visible" : "hidden",
-        height: isOpen ? "auto" : 0,
-      }}
-    >
-      {children}
+    <ul id={id} className={styles.menuList}>
+      <li>
+        <NavLink href="/">
+          <a className={styles.link}>Keyboards</a>
+        </NavLink>
+      </li>
+      <li>
+        <NavLink href="/switches">
+          <a className={styles.link}>Switches</a>
+        </NavLink>
+      </li>
+      <li>
+        <NavLink href="/keycaps">
+          <a className={styles.link}>Keycaps</a>
+        </NavLink>
+      </li>
     </ul>
   );
 }
 
 export function Header({ className }) {
   const { isOpen, toggle } = useMenu();
+  const { width } = useWindowWidth(0);
 
   return (
-    <MenuContext.Provider value={{ isOpen, toggle }}>
+    <MenuContext.Provider value={{ isOpen, toggle, width }}>
       <header className={`${styles.header} ${className}`}>
-        <nav className={styles.menu}>
-          <MenuButton></MenuButton>
-          <div>LOGO</div>
-        </nav>
-        <MenuList>
-          <li>
-            <NavLink href="/">
-              <a className={styles.link}>Keyboards</a>
-            </NavLink>
-          </li>
-          <li>
-            <NavLink href="/switches">
-              <a className={styles.link}>Switches</a>
-            </NavLink>
-          </li>
-          <li>
-            <NavLink href="/keycaps">
-              <a className={styles.link}>Keycaps</a>
-            </NavLink>
-          </li>
-        </MenuList>
+        {width < 768 && (
+          <nav className={styles.menu}>
+            <MenuButton></MenuButton>
+          </nav>
+        )}
+
+        {width > 768 ? <MenuList></MenuList> : isOpen && <MenuList></MenuList>}
       </header>
     </MenuContext.Provider>
   );

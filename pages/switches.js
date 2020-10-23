@@ -4,6 +4,7 @@ import { Layout } from "../components/layout";
 export default function Home({ data }) {
   return (
     <Layout pageTitle="switches">
+      <h1>Switches</h1>
       <pre>{JSON.stringify(data, null, 2)}</pre>
     </Layout>
   );

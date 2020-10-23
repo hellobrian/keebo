@@ -12,11 +12,3 @@ export function NavLink({ href, children }) {
 
   return <Link href={href}>{React.cloneElement(children, { className })}</Link>;
 }
-
-/* 
-.isActive {
-  background-repeat: no-repeat;
-  background-image: linear-gradient(var(--accent), var(--accent));
-  background-size: 100% 4px;
-  background-position: 0 105%;
-} */

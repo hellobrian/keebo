@@ -1,23 +1,36 @@
-.list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  grid-gap: 20px;
+.header {
   background: var(--fg);
+}
+
+.menu {
   height: 50px;
-  padding: 0 32px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
   align-items: center;
 }
 
-.link {
-  font-weight: 700;
-  font-size: 20px;
+.menuList {
+  display: flex;
+  flex-direction: column;
   padding: 0;
   margin: 0;
 }
 
-.isActive {
-  background-repeat: no-repeat;
-  background-image: linear-gradient(var(--accent), var(--accent));
-  background-size: 100% 4px;
-  background-position: 0 105%;
+.menuList > li {
+  padding: 16px 0;
+}
+
+.button {
+  justify-self: left;
+  padding: 4px;
+  width: 80px;
+}
+
+.button > .text {
+  margin-left: 8px;
+}
+
+.link.isActive {
+  background: var(--accent);
 }

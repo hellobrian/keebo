@@ -10,6 +10,8 @@
   --text: var(--white);
   --accent: var(--pink);
   --cta: var(--purple);
+
+  --header: 100;
 }
 
 * {

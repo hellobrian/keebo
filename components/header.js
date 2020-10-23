@@ -1,39 +1,55 @@
-import Link from "next/link";
-import { useRouter } from "next/router";
+import { useState } from "react";
+import { NavLink } from "./nav-link";
 import styles from "./header.module.css";
 
-function NavLink({ href, children }) {
-  const router = useRouter();
-
-  let className = children.props.className || "";
-  if (router.pathname === href) {
-    className = `${className} ${styles.isActive}`;
-  }
-
-  return <Link href={href}>{React.cloneElement(children, { className })}</Link>;
-}
-
-const MENU_LIST = [
-  { href: "/", label: "Keyboards" },
-  { href: "/switches", label: "Switches" },
-  { href: "/keycaps", label: "Keycaps" },
-];
-
-export function Header() {
+export function Header({ className }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const toggle = () => setIsOpen(!isOpen);
   return (
     <>
-      <header>
-        <nav>
-          <ul className={styles.list}>
-            {MENU_LIST.map((item) => (
-              <li key={item.label}>
-                <NavLink href={item.href}>
-                  <a className={styles.link}>{item.label}</a>
-                </NavLink>
-              </li>
-            ))}
-          </ul>
+      <header className={`${styles.header} ${className}`}>
+        <nav className={styles.menu}>
+          <button
+            className={styles.button}
+            aria-expanded={isOpen}
+            aria-controls="menu-list"
+            type="button"
+            onClick={toggle}
+          >
+            {isOpen ? (
+              <span className={styles.close}>×</span>
+            ) : (
+              <span className={styles.open}>☰</span>
+            )}
+            <span className={styles.text}>Menu</span>
+          </button>
+
+          <div>LOGO</div>
         </nav>
+        <ul
+          id="menu-list"
+          className={styles.menuList}
+          style={{
+            visibility: isOpen ? "visible" : "hidden",
+            height: isOpen ? "auto" : 0,
+          }}
+        >
+          <li>
+            <NavLink href="/">
+              <a className={styles.link}>Keyboards</a>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink href="/switches">
+              <a className={styles.link}>Switches</a>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink href="/keycaps">
+              <a className={styles.link}>Keycaps</a>
+            </NavLink>
+          </li>
+        </ul>
       </header>
     </>
   );

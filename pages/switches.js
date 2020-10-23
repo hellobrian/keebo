@@ -1,11 +1,10 @@
 import { request, gql } from "graphql-request";
-
 import { Layout } from "../components/layout";
 
 export default function Home({ data }) {
   return (
-    <Layout pageTitle="keyboards">
-      <h1>Keyboards</h1>
+    <Layout pageTitle="switches">
+      <h1>Switches</h1>
       <pre>{JSON.stringify(data, null, 2)}</pre>
     </Layout>
   );
@@ -15,7 +14,7 @@ export async function getServerSideProps() {
   const endpoint = process.env.GRAPHQL_ENDPOINT;
   const query = gql`
     query {
-      keyboards {
+      switches {
         id
         name
       }

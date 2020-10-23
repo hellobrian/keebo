@@ -1,9 +1,40 @@
-html,
-body {
+:root {
+  --white: #fff;
+  --black: #000;
+  --blue: #2b3595;
+  --blue--dark: #182952;
+  --pink: #e14594;
+  --purple: #7045af;
+
+  --fg: var(--blue);
+  --bg: var(--blue--dark);
+  --text: var(--white);
+  --text-inverse: var(--black);
+  --accent: var(--pink);
+  --cta: var(--purple);
+}
+
+* {
+  box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: "IBM Plex Mono", monospace;
+  line-height: 1;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.25;
 }
 
 a {
@@ -11,6 +42,11 @@ a {
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
+ul {
+  list-style-type: none;
+}
+
+.font-smoothing {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

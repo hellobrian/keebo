@@ -2,9 +2,9 @@ import Head from "next/head";
 import { Header } from "./header";
 import styles from "./layout.module.css";
 
-export function Layout({ pageTitle, children }) {
+export function Layout({ pageTitle, children, ...props }) {
   return (
-    <>
+    <div {...props}>
       <Head>
         <title>Keebs | {pageTitle}</title>
         <link rel="icon" href="/favicon.ico" />
@@ -14,6 +14,6 @@ export function Layout({ pageTitle, children }) {
 
         <main className={styles.content}>{children}</main>
       </div>
-    </>
+    </div>
   );
 }

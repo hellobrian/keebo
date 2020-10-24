@@ -89,7 +89,7 @@ export function Header({ className }) {
           </nav>
         )}
 
-        {width > 768 ? <MenuList></MenuList> : isOpen && <MenuList></MenuList>}
+        {width > 768 ? <MenuList /> : isOpen && <MenuList />}
       </header>
     </MenuContext.Provider>
   );

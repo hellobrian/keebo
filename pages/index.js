@@ -19,7 +19,6 @@ function Page({ title, children }) {
           style={{
             fontSize: 64,
             fontWeight: 400,
-
             margin: "40px 0",
           }}
         >

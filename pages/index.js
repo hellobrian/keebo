@@ -12,9 +12,19 @@ function Page({ title, children }) {
           gridGap: 20,
           maxWidth: 1200,
           margin: "0 auto",
+          padding: "0 32px",
         }}
       >
-        <h1 style={{ margin: "40px 0" }}>{title}</h1>
+        <h1
+          style={{
+            fontSize: 64,
+            fontWeight: 400,
+
+            margin: "40px 0",
+          }}
+        >
+          {title}
+        </h1>
         {children}
       </div>
     </Layout>
@@ -29,7 +39,16 @@ function CardGrid({ title, children }) {
         padding: 20,
       }}
     >
-      <h2 style={{ marginBottom: 20, textTransform: "capitalize" }}>{title}</h2>
+      <h2
+        style={{
+          fontSize: 32,
+          fontWeight: 400,
+          marginBottom: 20,
+          textTransform: "capitalize",
+        }}
+      >
+        {title}
+      </h2>
       <div
         style={{
           display: "grid",
@@ -51,7 +70,7 @@ function Card({ title, children }) {
         padding: 20,
       }}
     >
-      <h2>{title}</h2>
+      <h3 style={{ fontSize: 24, fontWeight: 400 }}>{title}</h3>
       {children}
     </div>
   );
@@ -100,7 +119,6 @@ function Tag({ style = {}, children }) {
   return (
     <li
       style={{
-        // display: "inline",
         border: "1px solid var(--white)",
         padding: 8,
         ...style,
@@ -141,9 +159,6 @@ export async function getServerSideProps() {
         id
         name
         status
-        case {
-          color
-        }
         pcb {
           pins
           hotswap
@@ -151,10 +166,6 @@ export async function getServerSideProps() {
           pins
           stabilizers
           VIA
-        }
-        links {
-          label
-          href
         }
       }
     }

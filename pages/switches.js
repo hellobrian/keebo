@@ -1,3 +1,5 @@
+/** @jsx jsx */
+import { Text, jsx } from "theme-ui";
 import { request, gql } from "graphql-request";
 import { Layout } from "../components/layout";
 
@@ -6,6 +8,10 @@ export default function Home({ data }) {
     <Layout pageTitle="switches">
       <h1>Switches</h1>
       <pre>{JSON.stringify(data, null, 2)}</pre>
+      <Text>hello</Text>
+      <div sx={{ backgroundColor: "primary", color: "white", p: 4 }}>
+        tomato
+      </div>
     </Layout>
   );
 }

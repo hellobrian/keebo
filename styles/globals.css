@@ -4,6 +4,9 @@
   --blue: #2b3595;
   --blue--dark: #182952;
   --pink: #e14594;
+  --pink--light: pink;
+  --salmon: salmon;
+  --purple--dark: purple;
   --purple: #7045af;
 
   --fg: var(--blue);

@@ -1,11 +1,13 @@
 .header {
-  background: var(--fg);
+  background: var(--pink);
+  color: var(--text);
+  font-weight: 700;
+  font-size: 20px;
 }
 
 .menu {
-  height: 40px;
+  height: 52px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   justify-items: center;
   align-items: center;
   width: 100%;
@@ -13,20 +15,8 @@
 
 .menuList {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 100px);
+  grid-template-columns: repeat(auto-fit, 120px);
   grid-gap: 20px;
-}
-
-@media (max-width: 768px) {
-  .menuList {
-    text-align: center;
-  }
-}
-
-@media (max-width: 400px) {
-  .menuList {
-    grid-template-columns: 1fr;
-  }
 }
 
 .menuList.isOpen {
@@ -40,27 +30,85 @@
 }
 
 .menuList > li {
+  display: inline-flex;
   padding: 16px 0;
 }
 
 .button {
+  appearance: none;
+  border: 1px solid transparent;
+  letter-spacing: 2px;
   justify-self: left;
   padding: 8px 4px;
   width: 100px;
   font-weight: 700;
   appearance: none;
-  background: var(--cta);
+  background: var(--pink);
   color: var(--text);
   font-size: 18px;
-  height: 40px;
+  height: 68px;
+}
+
+.button:active,
+.button:focus,
+.button:visited {
+  outline: 1px solid var(--pink--light);
 }
 
 .button > .text {
   margin-left: 8px;
 }
 
-.link.isActive {
-  background: var(--accent);
+.link {
+  display: inline-flex;
+  padding: 8px;
+}
+
+.link:hover,
+.link.isActive:hover {
   color: var(--text-inverse);
+}
+
+.link.isActive {
+  color: var(--text);
+  text-decoration: underline;
   font-weight: 700;
+  text-decoration-color: var(--pink--light);
+}
+
+@media (max-width: 768px) {
+  .header {
+    background: var(--bg);
+    background: transparent;
+  }
+
+  .menuList {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    grid-template-rows: repeat(4, 68px);
+    grid-gap: 4px;
+    align-items: center;
+    margin-left: 100px;
+  }
+
+  .menuList > li {
+    padding: 0;
+  }
+
+  .link {
+    background: var(--pink);
+  }
+
+  .link.link.isActive {
+    background: var(--black);
+    color: var(--pink--light);
+    text-decoration-color: var(--accent);
+  }
+}
+
+@media (max-width: 300px) {
+  .menuList {
+    display: grid;
+    margin-left: 0;
+  }
 }

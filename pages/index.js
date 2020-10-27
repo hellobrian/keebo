@@ -1,6 +1,7 @@
 import { request, gql } from "graphql-request";
 
 import { Layout } from "../components/layout";
+import styles from "./index.module.css";
 
 function Page({ title, children }) {
   return (
@@ -10,7 +11,7 @@ function Page({ title, children }) {
         style={{
           display: "grid",
           gridGap: 20,
-          maxWidth: 1200,
+          maxWidth: 1920,
           margin: "0 auto",
           padding: "0 32px",
         }}
@@ -32,12 +33,7 @@ function Page({ title, children }) {
 
 function CardGrid({ title, children }) {
   return (
-    <div
-      style={{
-        border: "1px solid var(--blue)",
-        padding: 20,
-      }}
-    >
+    <div className={styles.cardGrid}>
       <h2
         style={{
           fontSize: 32,
@@ -48,13 +44,7 @@ function CardGrid({ title, children }) {
       >
         {title}
       </h2>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-          gridGap: 20,
-        }}
-      >
+      <div id={title} className={`${styles.content} ${styles[title]}`}>
         {children}
       </div>
     </div>
@@ -69,7 +59,9 @@ function Card({ title, children }) {
         padding: 20,
       }}
     >
-      <h3 style={{ fontSize: 24, fontWeight: 400 }}>{title}</h3>
+      <h3 style={{ fontSize: 24, fontWeight: 400, marginBottom: 20 }}>
+        {title}
+      </h3>
       {children}
     </div>
   );
@@ -141,6 +133,16 @@ export default function Home({ data }) {
         <CardGrid key={index} title={status}>
           {filterKeyboards(data, status).map((keyboard) => (
             <Card key={keyboard.id} title={keyboard.name}>
+              <div>
+                <img
+                  src="https://massdrop-s3.imgix.net/product-images/massdrop-x-tokyo-keyboard-tokyo60-keyboard-kit/FP/QrAV4cdARLGK1PUtnpps_CB5A6534-copy.jpg"
+                  alt=""
+                  style={{
+                    width: "100%",
+                    height: "auto",
+                  }}
+                />
+              </div>
               <TagGrid keyboard={keyboard}></TagGrid>
             </Card>
           ))}

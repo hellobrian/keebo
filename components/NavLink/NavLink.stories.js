@@ -1,13 +1,13 @@
 import React from "react";
 
-import { AnchorLink } from "./NavLink";
+import { NavLink } from "./NavLink";
 
 export default {
-  title: "Example/AnchorLink (NavLink)",
-  component: AnchorLink,
+  title: "Example/NavLink (NavLink)",
+  component: NavLink,
 };
 
-const Template = (args) => <AnchorLink {...args} />;
+const Template = (args) => <NavLink {...args} />;
 
 export const Nav = Template.bind({});
 

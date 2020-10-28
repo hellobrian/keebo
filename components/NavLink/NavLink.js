@@ -2,19 +2,22 @@ import Link from "next/link";
 import { Link as ThemeLink } from "theme-ui";
 import { useRouter } from "next/router";
 
-export function NavLink({ href, children }) {
-  const router = useRouter();
+// export function NavLink({ href, children }) {
+//   const router = useRouter();
 
-  return (
-    <Link href={href}>
-      <AnchorLink className={className} isActive={router.pathname === href}>
-        {children}
-      </AnchorLink>
-    </Link>
-  );
-}
+//   return (
+//     <Link href={href} passHref>
+//       <AnchorLink isActive={router.pathname === href}>{children}</AnchorLink>
+//     </Link>
+//   );
+// }
 
-export function AnchorLink({ isActive = false, children, variant = "nav" }) {
+export function NavLink({
+  href = "",
+  isActive = false,
+  children,
+  variant = "nav",
+}) {
   const activeStyles = {
     borderBottomWidth: "4px",
     borderBlockEndStyle: "solid",
@@ -25,6 +28,7 @@ export function AnchorLink({ isActive = false, children, variant = "nav" }) {
 
   return (
     <ThemeLink
+      href={href}
       variant={variant}
       sx={isActive ? { ...styles, ...activeStyles } : styles}
     >

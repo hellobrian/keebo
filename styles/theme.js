@@ -3,7 +3,10 @@ export default {
     black: "#000",
     white: "#fff",
     salmon: "salmon",
+    yellow: "#feca57",
     primary: "salmon",
+    text: "#fff",
+    active: "#feca57",
   },
   fonts: {
     heading: `"IBM Plex Mono", monospace`,
@@ -32,4 +35,11 @@ export default {
   },
   breakpoints: ["400px", "768px"],
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
+  links: {
+    nav: {
+      fontFamily: "body",
+      color: "text",
+      fontSize: 3,
+    },
+  },
 };

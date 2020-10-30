@@ -1,22 +1,35 @@
+const black = "#000";
+const white = "#fff";
+const blue = "#1e3799";
+const yellow = "#feca57";
+const salmon = "#ffb8b8";
+const teal = "#9AECDB";
+const midnightBlue = "#130f40";
+
 export default {
   colors: {
-    black: "#000",
-    white: "#fff",
-    salmon: "salmon",
-    yellow: "#feca57",
-    primary: "salmon",
-    text: "#fff",
-    active: "#feca57",
+    black,
+    white,
+    yellow,
+    blue,
+    salmon,
+    midnightBlue,
+    teal,
+    background: blue,
+    text: white,
+    active: yellow,
+    accent: salmon,
   },
   fonts: {
-    heading: `"IBM Plex Mono", monospace`,
-    body: `"IBM Plex Mono", monospace`,
-    monospace: "Menlo, monospace",
+    heading: `Source Serif Pro, serif`,
+    body: `Karla, sans-serif`,
+    monospace: `IBM Plex Mono, monospace`,
   },
-  fontSizes: [12, 14, 16, 20, 24, 32, 48, 64],
+  fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 128],
   fontWeights: {
     body: 400,
     heading: 700,
+    medium: 600,
     bold: 700,
   },
   lineHeights: {
@@ -40,6 +53,14 @@ export default {
       fontFamily: "body",
       color: "text",
       fontSize: 3,
+    },
+  },
+  buttons: {
+    primary: {
+      bg: "white",
+      color: "black",
+      fontFamily: "body",
+      fontWeight: "bold",
     },
   },
 };

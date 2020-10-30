@@ -1,3 +1,5 @@
+/** @jsx jsx */
+import { jsx } from "theme-ui";
 import { ThemeProvider } from "theme-ui";
 import theme from "../styles/theme";
 import "../styles/globals.css";

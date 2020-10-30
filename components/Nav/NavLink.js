@@ -1,16 +1,4 @@
-import Link from "next/link";
-import { Link as ThemeLink } from "theme-ui";
-import { useRouter } from "next/router";
-
-// export function NavLink({ href, children }) {
-//   const router = useRouter();
-
-//   return (
-//     <Link href={href} passHref>
-//       <AnchorLink isActive={router.pathname === href}>{children}</AnchorLink>
-//     </Link>
-//   );
-// }
+import { NavLink as ThemeLink } from "theme-ui";
 
 export function NavLink({
   href = "",

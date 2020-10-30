@@ -5,7 +5,7 @@ module.exports = {
   ],
   addons: ["@storybook/addon-links", "@storybook/addon-essentials"],
   webpackFinal: async (baseConfig) => {
-    const nextConfig = require("../next.config.js");
+    // const nextConfig = require("../next.config.js");
 
     // merge whatever from nextConfig into the webpack config storybook will use
     return { ...baseConfig };

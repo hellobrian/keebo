@@ -19,6 +19,7 @@ export function Card({
   stabilizers = "screw_in",
   via = true,
   blurb = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga expedita voluptas necessitatibus voluptatum?",
+  imgSrc = "https://massdrop-s3.imgix.net/product-images/massdrop-x-tokyo-keyboard-tokyo60-keyboard-kit/FP/QrAV4cdARLGK1PUtnpps_CB5A6534-copy.jpg?auto=format&fm=jpg&fit=fill&w=500&h=500&bg=f0f0f0&dpr=1&q=70",
 }) {
   return (
     <ThemeCard
@@ -34,7 +35,7 @@ export function Card({
           height: "100%",
         }}
         ratio={16 / 9}
-        src="https://massdrop-s3.imgix.net/product-images/massdrop-x-tokyo-keyboard-tokyo60-keyboard-kit/FP/QrAV4cdARLGK1PUtnpps_CB5A6534-copy.jpg?auto=format&fm=jpg&fit=fill&w=500&h=500&bg=f0f0f0&dpr=1&q=70"
+        src={imgSrc}
       />
       <Flex
         sx={{
@@ -44,6 +45,7 @@ export function Card({
           p: 3,
         }}
       >
+        {/* keyboard name */}
         <Heading
           sx={{
             display: "inline-block",
@@ -61,6 +63,7 @@ export function Card({
           {name}
         </Heading>
 
+        {/* tags */}
         <Text
           sx={{
             display: "inline-flex",
@@ -77,6 +80,8 @@ export function Card({
           {hotswap ? "hotswap  " : "soldered  "}{" "}
           {stabilizers === "screw_in" ? "screw-in stabs" : "plate-mount stabs"}
         </Text>
+
+        {/* blurb */}
         <Text
           sx={{
             fontFamily: "heading",

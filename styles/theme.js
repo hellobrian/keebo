@@ -5,6 +5,7 @@ const yellow = "#feca57";
 const salmon = "#ffb8b8";
 const teal = "#9AECDB";
 const midnightBlue = "#130f40";
+const coffeeCream = "#E9E0D2";
 
 export default {
   colors: {
@@ -15,7 +16,8 @@ export default {
     salmon,
     midnightBlue,
     teal,
-    background: blue,
+    coffeeCream,
+    background: coffeeCream,
     text: white,
     active: yellow,
     accent: salmon,
@@ -61,6 +63,8 @@ export default {
       color: "black",
       fontFamily: "body",
       fontWeight: "bold",
+      height: "40px",
+      border: "1px solid black",
     },
   },
 };

@@ -1,6 +1,8 @@
 import {
   Card as ThemeCard,
   Text,
+  AspectRatio,
+  Image,
   AspectImage,
   Heading,
   Flex,
@@ -24,19 +26,40 @@ export function Card({
   return (
     <ThemeCard
       sx={{
-        bg: "salmon",
+        bg: "white",
         width: "400px",
         pb: 2,
+        // borderRadius: "4px",
+        boxShadow:
+          "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+        // border: "12px solid #EABB92",
+        // boxShadow: "inset 0 2px 4px 0 rgba(0, 0, 0, 0.2)",
       }}
     >
-      <AspectImage
+      <AspectRatio
+        ratio={1 / 1}
         sx={{
-          width: "100%",
-          height: "100%",
+          m: 3,
+          border: "16px solid #EABB92",
+          boxShadow:
+            "inset 0 2px 4px 0 rgba(0, 0, 0, 0.2),  0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
         }}
-        ratio={16 / 9}
-        src={imgSrc}
-      />
+      >
+        <Image
+          sx={{
+            // display: "inline-block",
+            // width: "100%",
+            // height: "100%",
+            border: "16px solid white",
+            objectFit: "cover",
+            boxShadow:
+              "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)",
+            // backgroundPosition: "center center",
+          }}
+          src={imgSrc}
+        ></Image>
+      </AspectRatio>
+
       <Flex
         sx={{
           flexDirection: "column",
@@ -49,13 +72,13 @@ export function Card({
         <Heading
           sx={{
             display: "inline-block",
-            bg: "salmon",
+            // bg: "salmon",
             color: "black",
             fontSize: 7,
             fontWeight: "medium",
             p: 2,
             backgroundRepeat: "no-repeat",
-            backgroundImage: "linear-gradient(0, white, white)",
+            backgroundImage: "linear-gradient(0, #ffb8b8, #ffb8b8)",
             backgroundSize: "100% 6px",
             backgroundPosition: "4px 80%",
           }}
@@ -106,45 +129,39 @@ export function Card({
             mt: 3,
           }}
         >
-          <Button
-            sx={{
-              display: "inline-flex",
-              bg: "white",
-              alignItems: "center",
-              justifyContent: "center",
-              p: 2,
-              borderRadius: "4px",
-            }}
-          >
-            <Box
-              sx={{ mr: 1 }}
-              as="svg"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              width="20"
-              height="20"
-              fill="#B3A49E"
-            >
-              <circle r={9} cx={10} cy={10} stroke="black" strokeWidth={2} />
-            </Box>
-            <Text
-              sx={{
-                display: "inline-flex",
-                alignItems: "center",
-                color: "black",
-                fontSize: 3,
-                fontWeight: "bold",
-                letterSpacing: "-0.5px",
-                textAlign: "center",
-                height: "20px",
-              }}
-            >
-              {color}
-            </Text>
-          </Button>
-          <Button>View More</Button>
+          <ColorButton>{color}</ColorButton>
+          <Button type="button">View more</Button>
         </Grid>
       </Flex>
     </ThemeCard>
+  );
+}
+
+function ColorButton({ iconColor = "#B3A49E", children }) {
+  return (
+    <Button
+      type="button"
+      sx={{
+        display: "inline-flex",
+        alignItems: "center",
+        justifyContent: "center",
+        bg: "white",
+        p: 2,
+        textTransform: "capitalize",
+      }}
+    >
+      <Box
+        sx={{ mr: 1 }}
+        as="svg"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 20 20"
+        width="20"
+        height="20"
+        fill={iconColor}
+      >
+        <circle r={9} cx={10} cy={10} stroke="black" strokeWidth={1} />
+      </Box>
+      {children}
+    </Button>
   );
 }

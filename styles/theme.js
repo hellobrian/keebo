@@ -59,12 +59,12 @@ export default {
   },
   buttons: {
     primary: {
-      bg: "white",
+      bg: "rgba(0, 0, 0, 0.1)",
       color: "black",
       fontFamily: "body",
       fontWeight: "bold",
       height: "40px",
-      border: "1px solid black",
+      border: "2px solid rgba(0, 0, 0, 0.1)",
     },
   },
 };

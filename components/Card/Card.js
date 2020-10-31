@@ -26,8 +26,6 @@ export function Card({
 }) {
   const [isHover, setHover] = React.useState(false);
 
-  console.log(name.length);
-
   return (
     <ThemeCard
       sx={{
@@ -154,6 +152,16 @@ export function Card({
             variant="primary"
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
+            sx={{
+              border: "2px solid black",
+              bg: "white",
+              boxShadow: "3px 4px 0 0 rgba(0,0,0,1)",
+              transition: "all 100ms, color 100ms",
+              transitionTimingFunction: "cubic-bezier(.17,.67,.83,.67)",
+              ":hover": {
+                boxShadow: "5px 6px 0 0 #000",
+              },
+            }}
           >
             View more
           </Button>
@@ -164,30 +172,40 @@ export function Card({
 }
 
 function ColorButton({ iconColor = "#B3A49E", children }) {
+  const [isHover, setHover] = React.useState(false);
   const [text, setText] = React.useState(children);
   return (
     <Button
       onMouseDown={() => setText("Copied!")}
-      onMouseEnter={() => setText("Copy")}
-      onMouseLeave={() => setText(children)}
+      onMouseEnter={() => {
+        setText("Copy");
+        setHover(true);
+      }}
+      onMouseLeave={() => {
+        setText(children);
+        setHover(false);
+      }}
       type="button"
       sx={{
+        borderColor: iconColor,
         display: "inline-flex",
         alignItems: "center",
         justifyContent: "center",
         bg: "white",
         p: 2,
+        boxShadow: `3px 4px 0 0 ${iconColor}`,
         textTransform: "capitalize",
         transition: "all 100ms, color 100ms",
         transitionTimingFunction: "cubic-bezier(.17,.67,.83,.67)",
         "&:hover": {
           bg: iconColor,
           color: "white",
+          boxShadow: `0px 0px 0 0 ${iconColor}`,
         },
       }}
     >
       <Box
-        sx={{ mr: 1 }}
+        sx={{ mr: 1, display: isHover ? "none" : "initial" }}
         as="svg"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
@@ -195,7 +213,7 @@ function ColorButton({ iconColor = "#B3A49E", children }) {
         height="20"
         fill={iconColor}
       >
-        <circle r={9} cx={10} cy={10} stroke="black" strokeWidth={1} />
+        <circle r={9} cx={10} cy={10} stroke={"black"} strokeWidth={1} />
       </Box>
       {text}
     </Button>

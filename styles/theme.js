@@ -67,4 +67,27 @@ export default {
       border: "2px solid rgba(0, 0, 0, 0.1)",
     },
   },
+  badges: {
+    default: {
+      display: "inline-flex",
+      alignItems: "center",
+      lineHeight: 1,
+      border: "2px solid black",
+      bg: "white",
+      color: "black",
+      fontFamily: "body",
+      py: 1,
+      px: 2,
+      textTransform: "capitalize",
+    },
+    purchased: {
+      bg: "yellow",
+      color: "black",
+      fontFamily: "body",
+      py: 1,
+      px: 2,
+      textTransform: "capitalize",
+      transform: "rotate(0deg)",
+    },
+  },
 };

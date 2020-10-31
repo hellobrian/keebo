@@ -8,11 +8,12 @@ import {
   Flex,
   Button,
   Box,
+  Badge,
   Grid,
 } from "theme-ui";
 
 export function Card({
-  name = "Tokyo60",
+  name = "Stellar65",
   color = "coyote",
   status = "purchased",
   pins = 5,
@@ -24,18 +25,21 @@ export function Card({
   imgSrc = "https://massdrop-s3.imgix.net/product-images/massdrop-x-tokyo-keyboard-tokyo60-keyboard-kit/FP/QrAV4cdARLGK1PUtnpps_CB5A6534-copy.jpg?auto=format&fm=jpg&fit=fill&w=500&h=500&bg=f0f0f0&dpr=1&q=70",
 }) {
   const [isHover, setHover] = React.useState(false);
+
+  console.log(name.length);
+
   return (
     <ThemeCard
       sx={{
         bg: "white",
-        width: "400px",
         pb: 2,
         boxShadow:
           "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+        width: "400px",
       }}
     >
       <AspectRatio
-        ratio={1 / 1}
+        ratio={4 / 3}
         sx={{
           m: 3,
           transform: isHover ? "rotate(0deg) scale(1.2)" : "rotate(-1.6deg)",
@@ -43,6 +47,48 @@ export function Card({
           transitionTimingFunction: "cubic-bezier(.17,.67,.83,.67)",
         }}
       >
+        <Grid
+          sx={{
+            justifyItems: "end",
+            position: "absolute",
+            bottom: 2,
+            right: 2,
+            gridGap: "4px",
+            m: 0,
+            gridTemplateColumns: "repeat(auto-fit, minmax(3ch, 10ch))",
+            opacity: isHover ? 0 : 1,
+            transition: "opacity 100ms",
+            transitionTimingFunction: "cubic-bezier(.17,.67,.83,.67)",
+          }}
+        >
+          <Badge variant={status}>{status}</Badge>
+          <Badge variant="default">HHKB</Badge>
+          <Badge variant="default">Hotswap</Badge>
+          <Badge variant="default">VIA</Badge>
+        </Grid>
+        <Heading
+          // as="h3"
+          sx={{
+            position: "absolute",
+            left: 2,
+            transform: "rotate(-2deg)",
+            opacity: isHover ? 0 : 1,
+            transition: "opacity 100ms",
+            transitionTimingFunction: "cubic-bezier(.17,.67,.83,.67)",
+            display: "inline-block",
+            color: "black",
+            fontSize: name.length > 13 ? [3, 4] : [5, 6],
+            fontWeight: "medium",
+            p: 2,
+            backgroundRepeat: "no-repeat",
+            backgroundImage: "linear-gradient(0, #ffb8b8, #ffb8b8)",
+            backgroundSize: "100% 6px",
+            backgroundPosition: "4px 80%",
+            backgroundRepeat: "no-repeat",
+          }}
+        >
+          {name}
+        </Heading>
         <Image
           sx={{
             width: "100%",
@@ -63,24 +109,6 @@ export function Card({
           p: 3,
         }}
       >
-        {/* keyboard name */}
-        <Heading
-          sx={{
-            display: "inline-block",
-            color: "black",
-            fontSize: 7,
-            fontWeight: "medium",
-            p: 2,
-            backgroundRepeat: "no-repeat",
-            backgroundImage: "linear-gradient(0, #ffb8b8, #ffb8b8)",
-            backgroundSize: "100% 6px",
-            backgroundPosition: "4px 80%",
-          }}
-        >
-          {name}
-        </Heading>
-
-        {/* tags */}
         <Text
           sx={{
             display: "inline-flex",
@@ -93,9 +121,7 @@ export function Card({
             textAlign: "center",
           }}
         >
-          {layout} {`${pins} pins`} {via && "VIA  "}
-          {hotswap ? "hotswap  " : "soldered  "}{" "}
-          {stabilizers === "screw_in" ? "screw-in stabs" : "plate-mount stabs"}
+          Totally rad keyboard!
         </Text>
 
         {/* blurb */}

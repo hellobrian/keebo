@@ -13,17 +13,10 @@ import {
 
 export function Card({
   name = "Stellar65",
-  color = "coyote",
   status = "purchased",
   pins = 5,
-  hotswap = true,
-  layout = "HHKB",
-  stabilizers = "screw_in",
-  via = true,
   blurb = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga expedita voluptas necessitatibus voluptatum?",
-  // imgSrc = "https://massdrop-s3.imgix.net/product-images/massdrop-x-tokyo-keyboard-tokyo60-keyboard-kit/FP/QrAV4cdARLGK1PUtnpps_CB5A6534-copy.jpg?auto=format&fm=jpg&fit=fill&w=500&h=500&bg=f0f0f0&dpr=1&q=70",
-  // imgSrc = "https://bit.ly/361GATx",
-  heroImg = "",
+  heroImg,
   sx = {},
   isDark = false,
 }) {
@@ -69,9 +62,6 @@ export function Card({
             variant="default"
             sx={{ mr: 1, mb: 1 }}
           >{`${pins} pins`}</Badge>
-          <Badge variant="default" sx={{ mr: 1, mb: 1 }}>
-            {stabilizers}
-          </Badge>
         </Flex>
         <Heading
           sx={{
@@ -154,11 +144,11 @@ export function Card({
           sx={{
             alignItems: "center",
             gridGap: "8px",
-            gridTemplateColumns: "1fr 1fr",
+            gridTemplateColumns: "1fr",
             mt: 3,
           }}
         >
-          <ColorButton>{color}</ColorButton>
+          {/* <ColorButton>{color}</ColorButton> */}
           <Button
             variant="primary"
             onMouseEnter={() => setHover(true)}

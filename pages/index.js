@@ -31,7 +31,7 @@ const KEYBOARDS_IS_DARK = [
 const endpoint = process.env.GRAPHQL_ENDPOINT;
 const query = gql`
   query {
-    keyboards(sort: "name") {
+    keyboards {
       id
       name
       status
@@ -40,39 +40,22 @@ const query = gql`
       }
       pcb {
         pins
-        hotswap
-        layout
-        pins
-        stabilizers
-        via
       }
     }
   }
 `;
-
-export async function getStaticProps() {
-  const data = await request(endpoint, query);
-  return { props: { data } };
-}
 
 async function getKeyboards() {
   const data = await request(endpoint, query);
   return data;
 }
 
-export default function Home(props) {
-  const { data, status, error } = useQuery("keyboards", getKeyboards, {
-    initialData: props.data,
-  });
+export async function getServerSideProps() {
+  const data = await getKeyboards();
+  return { props: { data } };
+}
 
-  if (status === "loading") {
-    return <div>Loading...</div>;
-  }
-
-  if (status === "error") {
-    return <div>Error: {error.message}</div>;
-  }
-
+export default function Home({ data }) {
   return (
     <Layout title="Keyboards">
       <Grid
@@ -83,22 +66,13 @@ export default function Home(props) {
         }}
       >
         {data.keyboards.map((keyboard) => {
-          const layout = layoutText(keyboard.pcb.layout);
-          const hotswap = keyboard.pcb.hotswap ? "hotswap" : "soldered";
-          const stabilizers =
-            keyboard.pcb.stabilizers === "plate_mount"
-              ? "plate-mount stabs"
-              : "screw-in stabs";
-
           return (
             <Card
               isDark={KEYBOARDS_IS_DARK.includes(keyboard.name.toLowerCase())}
               key={keyboard.id}
+              pins={keyboard.pcb.pins}
               name={keyboard.name}
               status={keyboard.status}
-              layout={layout}
-              stabilizers={stabilizers}
-              hotswap={hotswap}
               heroImg={`${process.env.BASE_URL}${keyboard?.heroImg?.formats?.small?.url}`}
             />
           );

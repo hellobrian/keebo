@@ -35,9 +35,7 @@ const query = gql`
       id
       name
       status
-      heroImg {
-        formats
-      }
+      cardImgUrl
       pcb {
         pins
       }
@@ -73,7 +71,7 @@ export default function Home({ data }) {
               pins={keyboard.pcb.pins}
               name={keyboard.name}
               status={keyboard.status}
-              heroImg={`${process.env.BASE_URL}${keyboard?.heroImg?.formats?.small?.url}`}
+              heroImg={keyboard.cardImgUrl}
             />
           );
         })}

@@ -1,19 +1,17 @@
 import Head from "next/head";
-import { Header } from "./header";
-import styles from "./layout.module.css";
+import { Nav } from "./Nav/Nav";
+import { Box, Grid } from "theme-ui";
 
-export function Layout({ pageTitle, children }) {
+export function Layout({ pageTitle, children, ...props }) {
   return (
     <>
-      <Head>
-        <title>Keebs | {pageTitle}</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <div className={styles.layout}>
-        <Header className={styles.header}></Header>
-
-        <main className={styles.content}>{children}</main>
-      </div>
+      <Box {...props}>
+        <Head>
+          <title>Keebs | {pageTitle}</title>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+        <Box as="main">{children}</Box>
+      </Box>
     </>
   );
 }

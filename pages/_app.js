@@ -1,7 +1,15 @@
-import '../styles/globals.css'
+/** @jsx jsx */
+import { jsx } from "theme-ui";
+import { ThemeProvider } from "theme-ui";
+import theme from "../styles/theme";
+import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <ThemeProvider theme={theme}>
+      <Component {...pageProps} />
+    </ThemeProvider>
+  );
 }
 
-export default MyApp
+export default MyApp;

@@ -20,7 +20,12 @@ const layoutText = (text) => {
   }
 };
 
-const STATUS_LIST = ["using", "purchased", "shelved"];
+const KEYBOARDS_IS_DARK = [
+  "anne pro 2",
+  "drop ctrl high-profile",
+  "keychron k2",
+  "nk65 milkshake",
+];
 
 export default function Home({ data }) {
   return (
@@ -42,12 +47,14 @@ export default function Home({ data }) {
 
           return (
             <Card
+              isDark={KEYBOARDS_IS_DARK.includes(keyboard.name.toLowerCase())}
               key={keyboard.id}
               name={keyboard.name}
               status={keyboard.status}
               layout={layout}
               stabilizers={stabilizers}
               hotswap={hotswap}
+              heroImg={`${process.env.BASE_URL}${keyboard?.heroImg?.formats?.small?.url}`}
             />
           );
         })}
@@ -64,6 +71,9 @@ export async function getServerSideProps() {
         id
         name
         status
+        heroImg {
+          formats
+        }
         pcb {
           pins
           hotswap

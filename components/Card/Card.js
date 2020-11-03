@@ -21,8 +21,11 @@ export function Card({
   stabilizers = "screw_in",
   via = true,
   blurb = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga expedita voluptas necessitatibus voluptatum?",
-  imgSrc = "https://massdrop-s3.imgix.net/product-images/massdrop-x-tokyo-keyboard-tokyo60-keyboard-kit/FP/QrAV4cdARLGK1PUtnpps_CB5A6534-copy.jpg?auto=format&fm=jpg&fit=fill&w=500&h=500&bg=f0f0f0&dpr=1&q=70",
+  // imgSrc = "https://massdrop-s3.imgix.net/product-images/massdrop-x-tokyo-keyboard-tokyo60-keyboard-kit/FP/QrAV4cdARLGK1PUtnpps_CB5A6534-copy.jpg?auto=format&fm=jpg&fit=fill&w=500&h=500&bg=f0f0f0&dpr=1&q=70",
+  // imgSrc = "https://bit.ly/361GATx",
+  heroImg = "",
   sx = {},
+  isDark = false,
 }) {
   const [isHover, setHover] = React.useState(false);
 
@@ -73,23 +76,23 @@ export function Card({
         <Heading
           sx={{
             position: "absolute",
-            left: 2,
-            transform: "rotate(-2deg)",
+            left: isDark ? -1 : 2,
+            transform: isDark ? "rotate(0)" : "rotate(-2deg)",
             opacity: isHover ? 0 : 1,
             transition: "opacity 100ms",
             transitionTimingFunction: "cubic-bezier(.17,.67,.83,.67)",
             display: "inline-block",
-            color: "black",
+            color: isDark ? "white" : "black",
             // fontSize: name.length > 13 ? [3, 4] : [5, 6],
             fontSize: name.length > 20 ? [3, 4] : [3, 5],
             fontWeight: "medium",
             p: 2,
             backgroundRepeat: "no-repeat",
             backgroundImage: "linear-gradient(0, #ffb8b8, #ffb8b8)",
-            backgroundSize: "100% 6px",
+            backgroundSize: "100% 3px",
             backgroundPosition: "4px 80%",
             backgroundRepeat: "no-repeat",
-            // whiteSpace: name.length > 13 ? "wrap" : "nowrap",
+            backgroundColor: isDark ? "#333333" : "none",
             whiteSpace: "nowrap",
           }}
         >
@@ -103,7 +106,7 @@ export function Card({
             objectFit: "cover",
             border: "2px solid rgba(0, 0, 0, 0.1)",
           }}
-          src={imgSrc}
+          src={heroImg}
         ></Image>
       </AspectRatio>
 

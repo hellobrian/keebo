@@ -1,3 +1,4 @@
+import { useQuery } from "react-query";
 import { request, gql } from "graphql-request";
 import { Grid } from "theme-ui";
 
@@ -27,7 +28,51 @@ const KEYBOARDS_IS_DARK = [
   "nk65 milkshake",
 ];
 
-export default function Home({ data }) {
+const endpoint = process.env.GRAPHQL_ENDPOINT;
+const query = gql`
+  query {
+    keyboards(sort: "name") {
+      id
+      name
+      status
+      heroImg {
+        formats
+      }
+      pcb {
+        pins
+        hotswap
+        layout
+        pins
+        stabilizers
+        via
+      }
+    }
+  }
+`;
+
+export async function getStaticProps() {
+  const data = await request(endpoint, query);
+  return { props: { data } };
+}
+
+async function getKeyboards() {
+  const data = await request(endpoint, query);
+  return data;
+}
+
+export default function Home(props) {
+  const { data, status, error } = useQuery("keyboards", getKeyboards, {
+    initialData: props.data,
+  });
+
+  if (status === "loading") {
+    return <div>Loading...</div>;
+  }
+
+  if (status === "error") {
+    return <div>Error: {error.message}</div>;
+  }
+
   return (
     <Layout title="Keyboards">
       <Grid
@@ -61,35 +106,4 @@ export default function Home({ data }) {
       </Grid>
     </Layout>
   );
-}
-
-export async function getServerSideProps() {
-  const endpoint = process.env.GRAPHQL_ENDPOINT;
-  const query = gql`
-    query {
-      keyboards(sort: "name") {
-        id
-        name
-        status
-        heroImg {
-          formats
-        }
-        pcb {
-          pins
-          hotswap
-          layout
-          pins
-          stabilizers
-          via
-        }
-      }
-    }
-  `;
-  const data = await request(endpoint, query);
-
-  return {
-    props: {
-      data,
-    },
-  };
 }

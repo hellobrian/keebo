@@ -17,6 +17,7 @@
     "next-on-netlify": "^2.5.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
+    "react-query": "^2.25.2",
     "theme-ui": "^0.4.0-rc.5"
   },
   "devDependencies": {

@@ -3,7 +3,6 @@ import {
   Text,
   AspectRatio,
   Image,
-  AspectImage,
   Heading,
   Flex,
   Button,
@@ -23,6 +22,7 @@ export function Card({
   via = true,
   blurb = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga expedita voluptas necessitatibus voluptatum?",
   imgSrc = "https://massdrop-s3.imgix.net/product-images/massdrop-x-tokyo-keyboard-tokyo60-keyboard-kit/FP/QrAV4cdARLGK1PUtnpps_CB5A6534-copy.jpg?auto=format&fm=jpg&fit=fill&w=500&h=500&bg=f0f0f0&dpr=1&q=70",
+  sx = {},
 }) {
   const [isHover, setHover] = React.useState(false);
 
@@ -33,7 +33,7 @@ export function Card({
         pb: 2,
         boxShadow:
           "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
-        width: "400px",
+        ...sx,
       }}
     >
       <AspectRatio
@@ -45,27 +45,32 @@ export function Card({
           transitionTimingFunction: "cubic-bezier(.17,.67,.83,.67)",
         }}
       >
-        <Grid
+        <Flex
           sx={{
-            justifyItems: "end",
             position: "absolute",
             bottom: 2,
             right: 2,
-            gridGap: "4px",
+            flexWrap: "wrap",
+            justifyContent: "flex-end",
+            width: ["100%", "50%"],
             m: 0,
-            gridTemplateColumns: "repeat(auto-fit, minmax(3ch, 10ch))",
             opacity: isHover ? 0 : 1,
             transition: "opacity 100ms",
             transitionTimingFunction: "cubic-bezier(.17,.67,.83,.67)",
           }}
         >
-          <Badge variant={status}>{status}</Badge>
-          <Badge variant="default">HHKB</Badge>
-          <Badge variant="default">Hotswap</Badge>
-          <Badge variant="default">VIA</Badge>
-        </Grid>
+          <Badge variant={status} sx={{ mr: 1, mb: 1 }}>
+            {status}
+          </Badge>
+          <Badge
+            variant="default"
+            sx={{ mr: 1, mb: 1 }}
+          >{`${pins} pins`}</Badge>
+          <Badge variant="default" sx={{ mr: 1, mb: 1 }}>
+            {stabilizers}
+          </Badge>
+        </Flex>
         <Heading
-          // as="h3"
           sx={{
             position: "absolute",
             left: 2,
@@ -75,7 +80,8 @@ export function Card({
             transitionTimingFunction: "cubic-bezier(.17,.67,.83,.67)",
             display: "inline-block",
             color: "black",
-            fontSize: name.length > 13 ? [3, 4] : [5, 6],
+            // fontSize: name.length > 13 ? [3, 4] : [5, 6],
+            fontSize: name.length > 20 ? [3, 4] : [3, 5],
             fontWeight: "medium",
             p: 2,
             backgroundRepeat: "no-repeat",
@@ -83,6 +89,8 @@ export function Card({
             backgroundSize: "100% 6px",
             backgroundPosition: "4px 80%",
             backgroundRepeat: "no-repeat",
+            // whiteSpace: name.length > 13 ? "wrap" : "nowrap",
+            whiteSpace: "nowrap",
           }}
         >
           {name}

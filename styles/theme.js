@@ -6,6 +6,7 @@ const salmon = "#ffb8b8";
 const teal = "#9AECDB";
 const midnightBlue = "#130f40";
 const coffeeCream = "#E9E0D2";
+const green = "#26de81";
 
 export default {
   colors: {
@@ -17,10 +18,16 @@ export default {
     midnightBlue,
     teal,
     coffeeCream,
+    green,
     background: coffeeCream,
     text: white,
     active: yellow,
     accent: salmon,
+    badge: {
+      using: green,
+      shelved: "#ccc",
+      purchased: yellow,
+    },
   },
   fonts: {
     heading: `Source Serif Pro, serif`,
@@ -69,8 +76,6 @@ export default {
   },
   badges: {
     default: {
-      display: "inline-flex",
-      alignItems: "center",
       lineHeight: 1,
       border: "2px solid black",
       bg: "white",
@@ -79,15 +84,37 @@ export default {
       py: 1,
       px: 2,
       textTransform: "capitalize",
+      textAlign: "center",
     },
-    purchased: {
-      bg: "yellow",
+    using: {
+      bg: "badge.using",
       color: "black",
       fontFamily: "body",
       py: 1,
       px: 2,
       textTransform: "capitalize",
       transform: "rotate(0deg)",
+      textAlign: "center",
+    },
+    purchased: {
+      bg: "badge.purchased",
+      color: "black",
+      fontFamily: "body",
+      py: 1,
+      px: 2,
+      textTransform: "capitalize",
+      transform: "rotate(0deg)",
+      textAlign: "center",
+    },
+    shelved: {
+      bg: "badge.shelved",
+      color: "black",
+      fontFamily: "body",
+      py: 1,
+      px: 2,
+      textTransform: "capitalize",
+      transform: "rotate(0deg)",
+      textAlign: "center",
     },
   },
 };

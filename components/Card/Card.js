@@ -89,6 +89,8 @@ export function Card({
           {name}
         </Heading>
         <Image
+          width={400}
+          height={300}
           sx={{
             width: "100%",
             height: "100%",

@@ -1,15 +1,23 @@
+import React from "react";
 import {
-  Card as ThemeCard,
-  Text,
-  AspectRatio,
-  Image,
-  Heading,
-  Flex,
-  Button,
-  Box,
-  Badge,
   Grid,
+  Flex,
+  Image,
+  Text,
+  Heading,
+  AspectRatio,
+  Badge,
+  useThemeUI,
 } from "theme-ui";
+import Link from "next/link";
+
+const TEMP_IMG =
+  "https://i1.wp.com/tokyokeyboard.com/wp-content/uploads/2019/10/hcStZW2-1.jpg?fit=2340%2C1073";
+
+const LOREM_IPSUM = `Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illo
+  reiciendis culpa dolore quo voluptatum tempore omnis fugiat ipsam
+  error delectus odit dolores reprehenderit quasi at, accusantium saepe
+  nihil, soluta consequatur?`;
 
 function useHover() {
   const [isHover, setHover] = React.useState(false);
@@ -24,7 +32,7 @@ function useHover() {
   };
 
   const scaleStyles = {
-    transform: isHover ? "rotate(0deg) scale(1.2)" : "rotate(-1.6deg)",
+    transform: isHover ? "scale(1.05)" : "scale(1)",
     transitionProperty: "transform",
     transitionDuration,
     transitionTimingFunction,
@@ -34,213 +42,102 @@ function useHover() {
 }
 
 export function Card({
-  name = "Stellar65",
+  src = TEMP_IMG,
+  heading = "Drop Ctrl High-Profile",
+  text = LOREM_IPSUM,
   status = "purchased",
-  pins = 5,
-  blurb = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga expedita voluptas necessitatibus voluptatum?",
-  heroImg,
-  sx = {},
-  isDark = false,
+  href = "/",
 }) {
-  const [isHover, setHover] = React.useState(false);
+  const { setHover, scaleStyles } = useHover();
+  const { theme } = useThemeUI();
+  const boxShadow =
+    "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.25)";
 
   return (
-    <ThemeCard
+    <Grid
       sx={{
+        borderRadius: "4px",
+        boxShadow,
         bg: "white",
-        pb: 2,
-        boxShadow:
-          "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
-        ...sx,
+        gridTemplateColumns: ["1fr", "1fr", "1fr", "repeat(2, 1fr)"],
+        borderRight: [
+          "none",
+          "none",
+          "none",
+          `8px solid ${theme.colors.badge[status]}`,
+        ],
       }}
     >
-      <AspectRatio
-        ratio={4 / 3}
-        sx={{
-          m: 3,
-          transform: isHover ? "rotate(0deg) scale(1.2)" : "rotate(-1.6deg)",
-          transition: "transform 100ms",
-          transitionTimingFunction: "cubic-bezier(.17,.67,.83,.67)",
-        }}
-      >
-        <Flex
-          sx={{
-            position: "absolute",
-            bottom: 2,
-            right: 2,
-            flexWrap: "wrap",
-            justifyContent: "flex-end",
-            width: ["100%", "50%"],
-            m: 0,
-            opacity: isHover ? 0 : 1,
-            transition: "opacity 100ms",
-            transitionTimingFunction: "cubic-bezier(.17,.67,.83,.67)",
-          }}
-        >
-          <Badge variant={status} sx={{ mr: 1, mb: 1 }}>
-            {status}
-          </Badge>
-          <Badge
-            variant="default"
-            sx={{ mr: 1, mb: 1 }}
-          >{`${pins} pins`}</Badge>
-        </Flex>
-        <Heading
-          sx={{
-            position: "absolute",
-            left: isDark ? -1 : 2,
-            transform: isDark ? "rotate(0)" : "rotate(-2deg)",
-            opacity: isHover ? 0 : 1,
-            transition: "opacity 100ms",
-            transitionTimingFunction: "cubic-bezier(.17,.67,.83,.67)",
-            display: "inline-block",
-            color: isDark ? "white" : "black",
-            // fontSize: name.length > 13 ? [3, 4] : [5, 6],
-            fontSize: name.length > 20 ? [3, 4] : [3, 5],
-            fontWeight: "medium",
-            p: 2,
-            backgroundRepeat: "no-repeat",
-            backgroundImage: "linear-gradient(0, #ffb8b8, #ffb8b8)",
-            backgroundSize: "100% 3px",
-            backgroundPosition: "4px 80%",
-            backgroundRepeat: "no-repeat",
-            backgroundColor: isDark ? "#333333" : "none",
-            whiteSpace: "nowrap",
-          }}
-        >
-          {name}
-        </Heading>
-        <Image
-          width={400}
-          height={300}
-          sx={{
-            width: "100%",
-            height: "100%",
-            border: "16px solid white",
-            objectFit: "cover",
-            border: "2px solid rgba(0, 0, 0, 0.1)",
-          }}
-          src={heroImg}
-        ></Image>
+      <AspectRatio ratio={16 / 9}>
+        <Link href={href} passHref>
+          <a>
+            <Image
+              onMouseEnter={() => setHover(true)}
+              onMouseLeave={() => setHover(false)}
+              src={src}
+              width={800}
+              height={450}
+              sx={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                ...scaleStyles,
+              }}
+            />
+          </a>
+        </Link>
       </AspectRatio>
-
       <Flex
         sx={{
+          p: 4,
           flexDirection: "column",
           justifyContent: "center",
-          alignItems: "center",
-          p: 3,
         }}
       >
-        <Text
-          sx={{
-            display: "inline-flex",
-            alignItems: "center",
-            color: "black",
-            fontSize: 3,
-            fontWeight: "bold",
-            px: 2,
-            letterSpacing: "-0.5px",
-            textAlign: "center",
-          }}
-        >
-          Totally rad keyboard!
-        </Text>
+        <Link href={href} passHref>
+          <a style={{ textDecoration: "none" }}>
+            <Heading
+              onMouseEnter={() => setHover(true)}
+              onMouseLeave={() => setHover(false)}
+              sx={{
+                textDecoration: "none",
+                fontSize: 5,
+                mb: 1,
+                fontWeight: "medium",
+                color: "text",
+              }}
+            >
+              {heading}
+            </Heading>
+          </a>
+        </Link>
 
-        {/* blurb */}
-        <Text
-          sx={{
-            fontFamily: "heading",
-            color: "black",
-            width: "75%",
-            m: "0 auto",
-            p: 2,
-            mt: 3,
-            textAlign: "center",
-            lineHeight: "body",
-          }}
-        >
-          {blurb}
-        </Text>
-
-        {/* Buttons */}
-        <Grid
-          sx={{
-            alignItems: "center",
-            gridGap: "8px",
-            gridTemplateColumns: "1fr",
-            mt: 3,
-          }}
-        >
-          {/* <ColorButton>{color}</ColorButton> */}
-          <Button
-            variant="primary"
+        <Flex sx={{ justifyContent: "flex-start", mb: 2 }}>
+          <Badge variant={status}>{status}</Badge>
+        </Flex>
+        <Text sx={{ mb: 3 }}>{text}</Text>
+        <Link href={href} passHref>
+          <Text
+            as={"a"}
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
             sx={{
-              border: "2px solid black",
-              bg: "white",
-              boxShadow: "3px 4px 0 0 rgba(0,0,0,1)",
-              transition: "all 100ms, color 100ms",
-              transitionTimingFunction: "cubic-bezier(.17,.67,.83,.67)",
-              ":hover": {
-                boxShadow: "5px 6px 0 0 #000",
-              },
+              textDecoration: "none",
+              width: "fit-content",
+              color: "text",
+              fontFamily: "heading",
+              fontWeight: "medium",
+              backgroundRepeat: "no-repeat",
+              backgroundImage: `linear-gradient(0, ${theme.colors.badge[status]}, ${theme.colors.badge[status]})`,
+              backgroundSize: "100% 3px",
+              backgroundPosition: "0px 100%",
+              backgroundRepeat: "no-repeat",
             }}
           >
-            View more
-          </Button>
-        </Grid>
+            See more
+          </Text>
+        </Link>
       </Flex>
-    </ThemeCard>
-  );
-}
-
-function ColorButton({ iconColor = "#B3A49E", children }) {
-  const [isHover, setHover] = React.useState(false);
-  const [text, setText] = React.useState(children);
-  return (
-    <Button
-      onMouseDown={() => setText("Copied!")}
-      onMouseEnter={() => {
-        setText("Copy");
-        setHover(true);
-      }}
-      onMouseLeave={() => {
-        setText(children);
-        setHover(false);
-      }}
-      type="button"
-      sx={{
-        borderColor: iconColor,
-        display: "inline-flex",
-        alignItems: "center",
-        justifyContent: "center",
-        bg: "white",
-        p: 2,
-        boxShadow: `3px 4px 0 0 ${iconColor}`,
-        textTransform: "capitalize",
-        transition: "all 100ms, color 100ms",
-        transitionTimingFunction: "cubic-bezier(.17,.67,.83,.67)",
-        "&:hover": {
-          bg: iconColor,
-          color: "white",
-          boxShadow: `0px 0px 0 0 ${iconColor}`,
-        },
-      }}
-    >
-      <Box
-        sx={{ mr: 1, display: isHover ? "none" : "initial" }}
-        as="svg"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 20 20"
-        width="20"
-        height="20"
-        fill={iconColor}
-      >
-        <circle r={9} cx={10} cy={10} stroke={"black"} strokeWidth={1} />
-      </Box>
-      {text}
-    </Button>
+    </Grid>
   );
 }

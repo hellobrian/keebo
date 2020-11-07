@@ -1,6 +1,5 @@
-import { useQuery } from "react-query";
 import { request, gql } from "graphql-request";
-import { Grid } from "theme-ui";
+import { Grid, Text } from "theme-ui";
 
 import { Layout } from "../components/layout";
 import { Card } from "../components/Card/Card";
@@ -20,13 +19,6 @@ const layoutText = (text) => {
       return text;
   }
 };
-
-const KEYBOARDS_IS_DARK = [
-  "anne pro 2",
-  "drop ctrl high-profile",
-  "keychron k2",
-  "nk65 milkshake",
-];
 
 const endpoint = process.env.GRAPHQL_ENDPOINT;
 const query = gql`
@@ -58,21 +50,23 @@ export default function Home({ data }) {
     <Layout title="Keyboards">
       <Grid
         sx={{
-          gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-          m: "0 auto",
-          maxWidth: "1200px",
+          gridGap: 4,
+          py: 6,
+          px: 3,
+          my: 0,
+          mx: "auto",
+          maxWidth: "900px",
         }}
       >
         {data.keyboards.map((keyboard) => {
           return (
             <Card
-              isDark={KEYBOARDS_IS_DARK.includes(keyboard.name.toLowerCase())}
               key={keyboard.id}
-              pins={keyboard.pcb.pins}
-              name={keyboard.name}
+              src={keyboard.cardImgUrl}
               status={keyboard.status}
-              heroImg={keyboard.cardImgUrl}
-            />
+              heading={keyboard.name}
+              href="/"
+            ></Card>
           );
         })}
       </Grid>

@@ -19,7 +19,7 @@ export default {
     teal,
     coffeeCream,
     green,
-    background: coffeeCream,
+    background: salmon,
     text: black,
     active: yellow,
     accent: salmon,

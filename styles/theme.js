@@ -20,7 +20,7 @@ export default {
     coffeeCream,
     green,
     background: coffeeCream,
-    text: white,
+    text: black,
     active: yellow,
     accent: salmon,
     badge: {
@@ -51,11 +51,12 @@ export default {
   },
   text: {
     default: {
-      color: "white",
+      color: "black",
       fontFamily: "body",
+      letterSpacing: "-0.01rem",
     },
   },
-  breakpoints: ["400px", "768px"],
+  breakpoints: ["300px", "500px", "700px", "900px"],
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   links: {
     nav: {

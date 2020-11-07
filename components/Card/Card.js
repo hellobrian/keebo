@@ -11,6 +11,28 @@ import {
   Grid,
 } from "theme-ui";
 
+function useHover() {
+  const [isHover, setHover] = React.useState(false);
+  const transitionTimingFunction = "cubic-bezier(.17,.67,.83,.67)";
+  const transitionDuration = "100ms";
+
+  const opacityStyles = {
+    opacity: isHover ? 0 : 1,
+    transitionProperty: "opacity",
+    transitionDuration,
+    transitionTimingFunction,
+  };
+
+  const scaleStyles = {
+    transform: isHover ? "rotate(0deg) scale(1.2)" : "rotate(-1.6deg)",
+    transitionProperty: "transform",
+    transitionDuration,
+    transitionTimingFunction,
+  };
+
+  return { isHover, setHover, opacityStyles, scaleStyles };
+}
+
 export function Card({
   name = "Stellar65",
   status = "purchased",

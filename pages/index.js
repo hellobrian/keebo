@@ -40,17 +40,23 @@ async function getKeyboards() {
   return data;
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const data = await getKeyboards();
-  return { props: { data } };
+  return {
+    props: { data },
+  };
 }
+
+// export async function getServerSideProps() {
+//   const data = await getKeyboards();
+//   return { props: { data } };
+// }
 
 export default function Home({ data }) {
   return (
     <Layout title="Keyboards">
       <Grid
         sx={{
-          // gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
           gridGap: 4,
           py: 6,
           px: 3,

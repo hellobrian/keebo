@@ -44,6 +44,7 @@ export async function getStaticProps() {
   const data = await getKeyboards();
   return {
     props: { data },
+    revalidate: 1, // In seconds
   };
 }
 

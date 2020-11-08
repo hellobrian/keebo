@@ -6,7 +6,43 @@ const salmon = "#ffb8b8";
 const teal = "#9AECDB";
 const midnightBlue = "#130f40";
 const coffeeCream = "#E9E0D2";
-const green = "#26de81";
+const green = "#0AD185";
+const deepRose = "#c44569";
+
+const badgeStyles = {
+  color: "black",
+  fontSize: 2,
+  fontWeight: "bold",
+  fontFamily: "badge",
+  py: 1,
+  px: 2,
+  textTransform: "capitalize",
+  textAlign: "center",
+};
+
+const badges = {
+  default: {
+    ...badgeStyles,
+    bg: "badge.default",
+  },
+  using: {
+    ...badgeStyles,
+    bg: "badge.using",
+  },
+  purchased: {
+    ...badgeStyles,
+    bg: "badge.purchased",
+  },
+  shelved: {
+    ...badgeStyles,
+    bg: "badge.shelved",
+  },
+  want: {
+    ...badgeStyles,
+    bg: "badge.want",
+    color: "white",
+  },
+};
 
 export default {
   colors: {
@@ -19,11 +55,14 @@ export default {
     teal,
     coffeeCream,
     green,
+    deepRose,
     background: salmon,
     text: black,
     active: yellow,
     accent: salmon,
     badge: {
+      want: deepRose,
+      default: white,
       using: green,
       shelved: "#ccc",
       purchased: yellow,
@@ -31,21 +70,23 @@ export default {
   },
   fonts: {
     heading: `Source Serif Pro, serif`,
-    body: `Karla, sans-serif`,
+    body: `Inter, sans-serif`,
     monospace: `IBM Plex Mono, monospace`,
+    badge: `Karla, sans-serif`,
   },
   fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 128],
   fontWeights: {
     body: 400,
-    heading: 700,
     medium: 600,
     bold: 700,
   },
   lineHeights: {
-    body: 1.5,
+    // body: 1.25,
+    body: "1.2",
     heading: 1.125,
   },
   letterSpacings: {
+    // body: "-0.025rem",
     body: "normal",
     caps: "0.2em",
   },
@@ -53,7 +94,12 @@ export default {
     default: {
       color: "black",
       fontFamily: "body",
-      letterSpacing: "-0.01rem",
+      lineHeight: "body",
+      letterSpacing: "body",
+      fontSize: 3,
+    },
+    heading: {
+      fontFamily: "monospace",
     },
   },
   breakpoints: ["300px", "500px", "700px", "900px"],
@@ -65,57 +111,5 @@ export default {
       fontSize: 3,
     },
   },
-  buttons: {
-    primary: {
-      bg: "rgba(0, 0, 0, 0.1)",
-      color: "black",
-      fontFamily: "body",
-      fontWeight: "bold",
-      height: "40px",
-      border: "2px solid rgba(0, 0, 0, 0.1)",
-    },
-  },
-  badges: {
-    default: {
-      lineHeight: 1,
-      border: "2px solid black",
-      bg: "white",
-      color: "black",
-      fontFamily: "body",
-      py: 1,
-      px: 2,
-      textTransform: "capitalize",
-      textAlign: "center",
-    },
-    using: {
-      bg: "badge.using",
-      color: "black",
-      fontFamily: "body",
-      py: 1,
-      px: 2,
-      textTransform: "capitalize",
-      transform: "rotate(0deg)",
-      textAlign: "center",
-    },
-    purchased: {
-      bg: "badge.purchased",
-      color: "black",
-      fontFamily: "body",
-      py: 1,
-      px: 2,
-      textTransform: "capitalize",
-      transform: "rotate(0deg)",
-      textAlign: "center",
-    },
-    shelved: {
-      bg: "badge.shelved",
-      color: "black",
-      fontFamily: "body",
-      py: 1,
-      px: 2,
-      textTransform: "capitalize",
-      transform: "rotate(0deg)",
-      textAlign: "center",
-    },
-  },
+  badges,
 };

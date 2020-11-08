@@ -11,6 +11,8 @@ import {
 } from "theme-ui";
 import Link from "next/link";
 
+import { CardLink } from "./CardLink";
+
 const TEMP_IMG =
   "https://i1.wp.com/tokyokeyboard.com/wp-content/uploads/2019/10/hcStZW2-1.jpg?fit=2340%2C1073";
 
@@ -70,8 +72,9 @@ export function Card({
     >
       <AspectRatio ratio={16 / 9}>
         <Link href={href} passHref>
-          <a>
+          <a aria-label={`click here to learn more about ${heading}`}>
             <Image
+              role="presentation"
               onMouseEnter={() => setHover(true)}
               onMouseLeave={() => setHover(false)}
               src={src}
@@ -115,28 +118,16 @@ export function Card({
         <Flex sx={{ justifyContent: "flex-start", mb: 2 }}>
           <Badge variant={status}>{status}</Badge>
         </Flex>
-        <Text sx={{ mb: 3 }}>{text}</Text>
-        <Link href={href} passHref>
-          <Text
-            as={"a"}
+        {/* <Text sx={{ mb: 3 }}>{text}</Text> */}
+        {/* <Link href={href} passHref>
+          <CardLink
+            color={theme.colors.badge[status]}
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
-            sx={{
-              textDecoration: "none",
-              width: "fit-content",
-              color: "text",
-              fontFamily: "heading",
-              fontWeight: "medium",
-              backgroundRepeat: "no-repeat",
-              backgroundImage: `linear-gradient(0, ${theme.colors.badge[status]}, ${theme.colors.badge[status]})`,
-              backgroundSize: "100% 3px",
-              backgroundPosition: "0px 100%",
-              backgroundRepeat: "no-repeat",
-            }}
           >
             See more
-          </Text>
-        </Link>
+          </CardLink>
+        </Link> */}
       </Flex>
     </Grid>
   );

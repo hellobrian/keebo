@@ -1,15 +1,16 @@
-const black = "#000";
+const black = "#151515";
 const white = "#fff";
 const blue = "#1e3799";
 const yellow = "#feca57";
 const salmon = "#ffb8b8";
-const teal = "#9AECDB";
+const mint = "#9AECDB";
 const midnightBlue = "#130f40";
 const coffeeCream = "#E9E0D2";
 const green = "#0AD185";
 const deepRose = "#c44569";
 
 const badgeStyles = {
+  borderRadius: "4px",
   color: "black",
   fontSize: 2,
   fontWeight: "bold",
@@ -52,41 +53,40 @@ export default {
     blue,
     salmon,
     midnightBlue,
-    teal,
+    mint,
     coffeeCream,
     green,
     deepRose,
-    background: salmon,
-    text: black,
+    background: mint,
+    text: white,
     active: yellow,
     accent: salmon,
     badge: {
       want: deepRose,
       default: white,
       using: green,
-      shelved: "#ccc",
+      shelved: coffeeCream,
       purchased: yellow,
     },
   },
   fonts: {
     heading: `Source Serif Pro, serif`,
-    body: `Inter, sans-serif`,
+    body: `IBM Plex Sans, sans-serif`,
     monospace: `IBM Plex Mono, monospace`,
     badge: `Karla, sans-serif`,
   },
-  fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 128],
+  fontSizes: [12, 14, 16, 18, 20, 24, 32, 48, 64, 128],
   fontWeights: {
     body: 400,
-    medium: 600,
+    medium: 500,
+    semi: 600,
     bold: 700,
   },
   lineHeights: {
-    // body: 1.25,
-    body: "1.2",
+    body: 1.6,
     heading: 1.125,
   },
   letterSpacings: {
-    // body: "-0.025rem",
     body: "normal",
     caps: "0.2em",
   },
@@ -96,10 +96,7 @@ export default {
       fontFamily: "body",
       lineHeight: "body",
       letterSpacing: "body",
-      fontSize: 3,
-    },
-    heading: {
-      fontFamily: "monospace",
+      fontSize: 4,
     },
   },
   breakpoints: ["300px", "500px", "700px", "900px"],

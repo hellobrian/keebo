@@ -3,10 +3,10 @@ import {
   Grid,
   Flex,
   Image,
-  Text,
   Heading,
   AspectRatio,
   Badge,
+  Text,
   useThemeUI,
 } from "theme-ui";
 import Link from "next/link";
@@ -60,7 +60,7 @@ export function Card({
       sx={{
         borderRadius: "4px",
         boxShadow,
-        bg: "white",
+        bg: "black",
         gridTemplateColumns: ["1fr", "1fr", "1fr", "repeat(2, 1fr)"],
         borderRight: [
           "none",
@@ -103,11 +103,15 @@ export function Card({
               onMouseEnter={() => setHover(true)}
               onMouseLeave={() => setHover(false)}
               sx={{
+                fontFamily: "heading",
                 textDecoration: "none",
-                fontSize: 5,
-                mb: 1,
-                fontWeight: "medium",
-                color: "text",
+                fontSize: 6,
+                mb: 3,
+                fontWeight: "semi",
+                // color: "text",
+                bg: "black",
+                width: "fit-content",
+                color: "white",
               }}
             >
               {heading}
@@ -118,16 +122,25 @@ export function Card({
         <Flex sx={{ justifyContent: "flex-start", mb: 2 }}>
           <Badge variant={status}>{status}</Badge>
         </Flex>
-        {/* <Text sx={{ mb: 3 }}>{text}</Text> */}
-        {/* <Link href={href} passHref>
+        <Text
+          as="p"
+          sx={{
+            mb: 3,
+            bg: "black",
+            color: "white",
+          }}
+        >
+          {text}
+        </Text>
+        <Link href={href} passHref>
           <CardLink
             color={theme.colors.badge[status]}
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
           >
-            See more
+            Read more
           </CardLink>
-        </Link> */}
+        </Link>
       </Flex>
     </Grid>
   );

@@ -23,7 +23,7 @@ const layoutText = (text) => {
 const endpoint = process.env.GRAPHQL_ENDPOINT;
 const query = gql`
   query {
-    keyboards {
+    keyboards(sort: "name") {
       id
       name
       status
@@ -47,22 +47,17 @@ export async function getStaticProps() {
   };
 }
 
-// export async function getServerSideProps() {
-//   const data = await getKeyboards();
-//   return { props: { data } };
-// }
-
 export default function Home({ data }) {
   return (
     <Layout title="Keyboards">
       <Grid
         sx={{
-          gridGap: 4,
-          py: 6,
-          px: 3,
+          gridGap: 5,
+          py: 4,
+          px: 2,
           my: 0,
           mx: "auto",
-          maxWidth: "900px",
+          maxWidth: "1200px",
         }}
       >
         {data.keyboards.map((keyboard) => {

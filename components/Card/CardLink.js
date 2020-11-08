@@ -5,9 +5,10 @@ export function CardLink({ color = "white", children, ...props }) {
   const underline = {
     backgroundRepeat: "no-repeat",
     backgroundImage: `linear-gradient(0, ${color}, ${color})`,
-    backgroundSize: "100% 3px",
-    backgroundPosition: "0px 90%",
+    backgroundSize: "100% 2px",
+    backgroundPosition: "0px 95%",
     backgroundRepeat: "no-repeat",
+    // alignSelf: "flex-start",
   };
   return (
     <Text
@@ -18,7 +19,6 @@ export function CardLink({ color = "white", children, ...props }) {
         color: "text",
         fontFamily: "body",
         fontWeight: "normal",
-        fontSize: 3,
         ...underline,
       }}
       {...props}

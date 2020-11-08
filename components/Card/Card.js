@@ -49,6 +49,7 @@ export function Card({
   text = LOREM_IPSUM,
   status = "purchased",
   href = "/",
+  isReverse = false,
 }) {
   const { setHover, scaleStyles } = useHover();
   const { theme } = useThemeUI();
@@ -61,8 +62,9 @@ export function Card({
         borderRadius: "4px",
         boxShadow,
         bg: "black",
-        gridTemplateColumns: ["1fr", "1fr", "1fr", "repeat(2, 1fr)"],
-        borderRight: [
+        // gridTemplateColumns: ["1fr", "1fr", "1fr", "repeat(2, 1fr)"],
+        gridTemplateColumns: "1fr",
+        borderTop: [
           "none",
           "none",
           "none",
@@ -92,7 +94,9 @@ export function Card({
       </AspectRatio>
       <Flex
         sx={{
-          p: 4,
+          pt: 3,
+          px: 4,
+          pb: 4,
           flexDirection: "column",
           justifyContent: "center",
         }}
@@ -108,7 +112,6 @@ export function Card({
                 fontSize: 6,
                 mb: 3,
                 fontWeight: "semi",
-                // color: "text",
                 bg: "black",
                 width: "fit-content",
                 color: "white",
@@ -119,7 +122,13 @@ export function Card({
           </a>
         </Link>
 
-        <Flex sx={{ justifyContent: "flex-start", mb: 2 }}>
+        <Flex
+          sx={{
+            justifyContent: "flex-start",
+            mb: 3,
+            transform: "translateX(-1px)",
+          }}
+        >
           <Badge variant={status}>{status}</Badge>
         </Flex>
         <Text
@@ -138,7 +147,7 @@ export function Card({
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
           >
-            Read more
+            Read more.
           </CardLink>
         </Link>
       </Flex>

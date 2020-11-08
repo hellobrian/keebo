@@ -53,15 +53,15 @@ export default function Home({ data }) {
     <Layout title="Keyboards">
       <Grid
         sx={{
-          gridGap: 5,
-          py: 4,
-          px: 2,
+          gridTemplateColumns: "repeat(auto-fit, minmax(380px, 1fr))",
+          gridGap: 4,
+          p: 4,
           my: 0,
           mx: "auto",
           maxWidth: "1200px",
         }}
       >
-        {data.keyboards.map((keyboard) => {
+        {data.keyboards.map((keyboard, index) => {
           return (
             <Card
               key={keyboard.id}
@@ -69,6 +69,7 @@ export default function Home({ data }) {
               status={keyboard.status}
               heading={keyboard.name}
               href="/"
+              isReverse={index % 2}
             ></Card>
           );
         })}

@@ -12,7 +12,14 @@ export function NavLink({
     borderBottomColor: "active",
   };
 
-  const styles = { textDecoration: "none" };
+  const styles = {
+    textDecoration: "none",
+    fontWeight: "normal",
+    borderBottomWidth: "4px",
+    borderBottomColor: "transparent",
+    fontSize: 4,
+    width: "fit-content",
+  };
 
   return (
     <ThemeLink

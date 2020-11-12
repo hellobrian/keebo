@@ -2,14 +2,16 @@ import React from "react";
 import {
   Grid,
   Flex,
-  Image,
+  Image as ThemeImage,
   Heading,
   AspectRatio,
   Badge,
   Text,
   useThemeUI,
 } from "theme-ui";
+
 import Link from "next/link";
+import Image from "next/image";
 
 import { CardLink } from "./CardLink";
 
@@ -49,7 +51,7 @@ export function Card({
   text = LOREM_IPSUM,
   status = "purchased",
   href = "/",
-  isReverse = false,
+  artisan = false,
 }) {
   const { setHover, scaleStyles } = useHover();
   const { theme } = useThemeUI();
@@ -59,29 +61,25 @@ export function Card({
   return (
     <Grid
       sx={{
-        borderRadius: "4px",
+        borderRadius: 1,
         boxShadow,
         bg: "black",
-        // gridTemplateColumns: ["1fr", "1fr", "1fr", "repeat(2, 1fr)"],
         gridTemplateColumns: "1fr",
-        borderTop: [
-          "none",
-          "none",
-          "none",
-          `8px solid ${theme.colors.badge[status]}`,
-        ],
+        borderTop: ["none", "none", `8px solid ${theme.colors.badge[status]}`],
       }}
     >
       <AspectRatio ratio={16 / 9}>
         <Link href={href} passHref>
           <a aria-label={`click here to learn more about ${heading}`}>
-            <Image
+            <ThemeImage
+              as={Image}
               role="presentation"
+              quality={70}
               onMouseEnter={() => setHover(true)}
               onMouseLeave={() => setHover(false)}
               src={src}
-              width={800}
-              height={450}
+              width={1600}
+              height={900}
               sx={{
                 width: "100%",
                 height: "100%",
@@ -104,17 +102,13 @@ export function Card({
         <Link href={href} passHref>
           <a style={{ textDecoration: "none" }}>
             <Heading
+              variant="h2"
               onMouseEnter={() => setHover(true)}
               onMouseLeave={() => setHover(false)}
               sx={{
-                fontFamily: "heading",
-                textDecoration: "none",
-                fontSize: 6,
                 mb: 3,
-                fontWeight: "semi",
                 bg: "black",
                 width: "fit-content",
-                color: "white",
               }}
             >
               {heading}
@@ -130,13 +124,18 @@ export function Card({
           }}
         >
           <Badge variant={status}>{status}</Badge>
+          {artisan && (
+            <Badge variant="artisan" sx={{ ml: 2 }}>
+              artisan
+            </Badge>
+          )}
         </Flex>
         <Text
           as="p"
           sx={{
             mb: 3,
             bg: "black",
-            color: "white",
+            color: "text",
           }}
         >
           {text}

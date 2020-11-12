@@ -13,7 +13,9 @@ export const decorators = [
         href="https://fonts.googleapis.com/css2?family=Karla:wght@400;700&family=Source+Serif+Pro:wght@400;600;700&display=swap"
         rel="stylesheet"
       />
-      <Story />
+      <main style={{ height: "100vh" }}>
+        <Story />
+      </main>
     </ThemeProvider>
   ),
 ];

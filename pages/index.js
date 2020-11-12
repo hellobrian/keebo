@@ -1,24 +1,24 @@
 import { request, gql } from "graphql-request";
-import { Grid, Text } from "theme-ui";
+import { Grid } from "theme-ui";
 
 import { Layout } from "../components/layout";
 import { Card } from "../components/Card/Card";
 
-const layoutText = (text) => {
-  switch (text) {
-    case "seventy_five":
-      return "75%";
+// const layoutText = (text) => {
+//   switch (text) {
+//     case "seventy_five":
+//       return "75%";
 
-    case "sixty_five":
-      return "65%";
+//     case "sixty_five":
+//       return "65%";
 
-    case "sixty":
-      return "60%";
+//     case "sixty":
+//       return "60%";
 
-    default:
-      return text;
-  }
-};
+//     default:
+//       return text;
+//   }
+// };
 
 const endpoint = process.env.GRAPHQL_ENDPOINT;
 const query = gql`
@@ -50,12 +50,17 @@ export async function getStaticProps() {
 
 export default function Home({ data }) {
   return (
-    <Layout title="Keyboards">
+    <Layout pageTitle="Keyboards">
       <Grid
         sx={{
-          gridTemplateColumns: "repeat(auto-fit, minmax(380px, 1fr))",
+          gridTemplateColumns: [
+            "repeat(auto-fit, minmax(300px, 1fr))",
+            null,
+            null,
+            "repeat(auto-fit, minmax(400px, 1fr))",
+          ],
           gridGap: 4,
-          p: 4,
+          p: 1,
           my: 0,
           mx: "auto",
           maxWidth: "1200px",
@@ -69,8 +74,7 @@ export default function Home({ data }) {
               status={keyboard.status}
               heading={keyboard.name}
               href="/"
-              isReverse={index % 2}
-            ></Card>
+            />
           );
         })}
       </Grid>

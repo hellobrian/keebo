@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { Nav } from "./Nav/Nav";
-import { Box, Grid } from "theme-ui";
+import { Box } from "theme-ui";
 
 export function Layout({ pageTitle, children, ...props }) {
   return (

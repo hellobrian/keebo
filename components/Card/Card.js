@@ -75,9 +75,9 @@ export function Card({
               quality={70}
               onMouseEnter={() => setHover(true)}
               onMouseLeave={() => setHover(false)}
-              src={`${src}?nf_resize=fit`}
-              width={1600}
-              height={900}
+              src={`${src}?nf_resize=fit&h=450`}
+              width={800}
+              height={450}
               sx={{
                 width: "100%",
                 height: "100%",

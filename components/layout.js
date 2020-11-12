@@ -25,12 +25,12 @@ export function Layout({ pageTitle, children, cardLayout = false, ...props }) {
             <Grid
               sx={{
                 gridTemplateColumns: "repeat(auto-fit, minmax(500px, 1fr))",
-
                 "@media screen and (max-width: 1150px)": {
                   gridTemplateColumns: "1fr",
                 },
                 gridGap: 4,
-                p: 1,
+                py: 6,
+                px: 1,
                 my: 0,
                 mx: "auto",
                 maxWidth: "1200px",

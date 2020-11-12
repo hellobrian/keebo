@@ -2,13 +2,15 @@ import React from "react";
 import {
   Grid,
   Flex,
-  Image,
+  Image as ThemeImage,
   Heading,
   AspectRatio,
   Badge,
   Text,
   useThemeUI,
 } from "theme-ui";
+
+import Image from "next/image";
 import Link from "next/link";
 
 import { CardLink } from "./CardLink";
@@ -75,7 +77,8 @@ export function Card({
       <AspectRatio ratio={16 / 9}>
         <Link href={href} passHref>
           <a aria-label={`click here to learn more about ${heading}`}>
-            <Image
+            <ThemeImage
+              as={Image}
               role="presentation"
               onMouseEnter={() => setHover(true)}
               onMouseLeave={() => setHover(false)}

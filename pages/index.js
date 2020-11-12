@@ -50,34 +50,18 @@ export async function getStaticProps() {
 
 export default function Home({ data }) {
   return (
-    <Layout pageTitle="keyboards">
-      <Grid
-        sx={{
-          gridTemplateColumns: [
-            "repeat(auto-fit, minmax(300px, 1fr))",
-            null,
-            null,
-            "repeat(auto-fit, minmax(400px, 1fr))",
-          ],
-          gridGap: 4,
-          p: 1,
-          my: 0,
-          mx: "auto",
-          maxWidth: "1200px",
-        }}
-      >
-        {data.keyboards.map((keyboard, index) => {
-          return (
-            <Card
-              key={keyboard.id}
-              src={keyboard.cardImgUrl}
-              status={keyboard.status}
-              heading={keyboard.name}
-              href="/"
-            />
-          );
-        })}
-      </Grid>
+    <Layout pageTitle="keyboards" cardLayout>
+      {data.keyboards.map((keyboard, index) => {
+        return (
+          <Card
+            key={keyboard.id}
+            src={keyboard.cardImgUrl}
+            status={keyboard.status}
+            heading={keyboard.name}
+            href="/"
+          />
+        );
+      })}
     </Layout>
   );
 }

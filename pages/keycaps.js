@@ -6,35 +6,19 @@ import { Card } from "../components/Card/Card";
 
 export default function Keycaps({ data }) {
   return (
-    <Layout pageTitle="keycaps">
-      <Grid
-        sx={{
-          gridTemplateColumns: [
-            "repeat(auto-fit, minmax(300px, 1fr))",
-            null,
-            null,
-            "repeat(auto-fit, minmax(400px, 1fr))",
-          ],
-          gridGap: 4,
-          p: 1,
-          my: 0,
-          mx: "auto",
-          maxWidth: "1200px",
-        }}
-      >
-        {data.keycaps.map((keycap) => {
-          return (
-            <Card
-              key={keycap.id}
-              src={keycap.cardImgUrl || "/keycaps/JTK-night-sakura.jpg"}
-              status={keycap.status}
-              heading={keycap.name}
-              artisan={keycap.artisan}
-              href="/"
-            ></Card>
-          );
-        })}
-      </Grid>
+    <Layout pageTitle="keycaps" cardLayout>
+      {data.keycaps.map((keycap) => {
+        return (
+          <Card
+            key={keycap.id}
+            src={keycap.cardImgUrl || "/keycaps/JTK-night-sakura.jpg"}
+            status={keycap.status}
+            heading={keycap.name}
+            artisan={keycap.artisan}
+            href="/"
+          ></Card>
+        );
+      })}
     </Layout>
   );
 }

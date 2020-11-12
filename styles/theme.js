@@ -129,7 +129,7 @@ export default {
       color: "text",
     },
   },
-  breakpoints: ["300px", "500px", "700px", "900px"],
+  breakpoints: ["300px", "500px", "700px", "968px"],
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   links: {
     nav: {

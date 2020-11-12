@@ -64,12 +64,7 @@ export function Card({
         boxShadow,
         bg: "black",
         gridTemplateColumns: "1fr",
-        borderTop: [
-          "none",
-          "none",
-          "none",
-          `8px solid ${theme.colors.badge[status]}`,
-        ],
+        borderTop: ["none", "none", `8px solid ${theme.colors.badge[status]}`],
       }}
     >
       <AspectRatio ratio={16 / 9}>

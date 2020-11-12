@@ -50,7 +50,7 @@ export async function getStaticProps() {
 
 export default function Home({ data }) {
   return (
-    <Layout pageTitle="Keyboards">
+    <Layout pageTitle="keyboards">
       <Grid
         sx={{
           gridTemplateColumns: [

@@ -51,7 +51,6 @@ export function Card({
   text = LOREM_IPSUM,
   status = "purchased",
   href = "/",
-  isReverse = false,
 }) {
   const { setHover, scaleStyles } = useHover();
   const { theme } = useThemeUI();
@@ -61,10 +60,9 @@ export function Card({
   return (
     <Grid
       sx={{
-        borderRadius: "4px",
+        borderRadius: 1,
         boxShadow,
         bg: "black",
-        // gridTemplateColumns: ["1fr", "1fr", "1fr", "repeat(2, 1fr)"],
         gridTemplateColumns: "1fr",
         borderTop: [
           "none",
@@ -107,17 +105,13 @@ export function Card({
         <Link href={href} passHref>
           <a style={{ textDecoration: "none" }}>
             <Heading
+              variant="h2"
               onMouseEnter={() => setHover(true)}
               onMouseLeave={() => setHover(false)}
               sx={{
-                fontFamily: "heading",
-                textDecoration: "none",
-                fontSize: 6,
                 mb: 3,
-                fontWeight: "semi",
                 bg: "black",
                 width: "fit-content",
-                color: "white",
               }}
             >
               {heading}
@@ -139,7 +133,7 @@ export function Card({
           sx={{
             mb: 3,
             bg: "black",
-            color: "white",
+            color: "text",
           }}
         >
           {text}

@@ -8,6 +8,34 @@ const midnightBlue = "#130f40";
 const coffeeCream = "#E9E0D2";
 const green = "#0AD185";
 const deepRose = "#c44569";
+const linearPink = "#d9afd9";
+const linearBlue = "#97d9e1";
+
+const colors = {
+  black,
+  white,
+  yellow,
+  blue,
+  salmon,
+  midnightBlue,
+  mint,
+  coffeeCream,
+  green,
+  deepRose,
+  linearPink,
+  linearBlue,
+  background: linearPink,
+  text: white,
+  active: yellow,
+  accent: salmon,
+  badge: {
+    want: deepRose,
+    default: white,
+    using: green,
+    shelved: coffeeCream,
+    purchased: yellow,
+  },
+};
 
 const badgeStyles = {
   borderRadius: "4px",
@@ -46,29 +74,8 @@ const badges = {
 };
 
 export default {
-  colors: {
-    black,
-    white,
-    yellow,
-    blue,
-    salmon,
-    midnightBlue,
-    mint,
-    coffeeCream,
-    green,
-    deepRose,
-    background: mint,
-    text: white,
-    active: yellow,
-    accent: salmon,
-    badge: {
-      want: deepRose,
-      default: white,
-      using: green,
-      shelved: coffeeCream,
-      purchased: yellow,
-    },
-  },
+  colors,
+  radii: ["0", "4px"],
   fonts: {
     heading: `Source Serif Pro, serif`,
     body: `IBM Plex Sans, sans-serif`,
@@ -97,6 +104,24 @@ export default {
       lineHeight: "body",
       letterSpacing: "body",
       fontSize: 4,
+    },
+    h1: {
+      fontSize: 7,
+      fontFamily: "heading",
+      fontWeight: "semi",
+      color: "text",
+    },
+    h2: {
+      fontSize: 6,
+      fontFamily: "heading",
+      fontWeight: "semi",
+      color: "text",
+    },
+    h3: {
+      fontSize: 5,
+      fontFamily: "heading",
+      fontWeight: "semi",
+      color: "text",
     },
   },
   breakpoints: ["300px", "500px", "700px", "900px"],

@@ -28,6 +28,9 @@ export const AllBadges = () => {
       <Badge sx={styles} variant="want" className="want">
         want
       </Badge>
+      <Badge sx={styles} variant="artisan" className="artisan">
+        artisan
+      </Badge>
     </Flex>
   );
 };

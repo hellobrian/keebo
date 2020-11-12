@@ -51,6 +51,7 @@ export function Card({
   text = LOREM_IPSUM,
   status = "purchased",
   href = "/",
+  artisan = false,
 }) {
   const { setHover, scaleStyles } = useHover();
   const { theme } = useThemeUI();
@@ -127,6 +128,11 @@ export function Card({
           }}
         >
           <Badge variant={status}>{status}</Badge>
+          {artisan && (
+            <Badge variant="artisan" sx={{ ml: 2 }}>
+              artisan
+            </Badge>
+          )}
         </Flex>
         <Text
           as="p"

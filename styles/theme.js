@@ -34,6 +34,7 @@ const colors = {
     using: green,
     shelved: coffeeCream,
     purchased: yellow,
+    artisan: salmon,
   },
 };
 
@@ -69,7 +70,11 @@ const badges = {
   want: {
     ...badgeStyles,
     bg: "badge.want",
-    color: "white",
+    color: "text",
+  },
+  artisan: {
+    ...badgeStyles,
+    bg: "badge.artisan",
   },
 };
 

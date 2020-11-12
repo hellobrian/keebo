@@ -26,9 +26,10 @@ export default function Keycaps({ data }) {
           return (
             <Card
               key={keycap.id}
-              src={keycap.cardImgUrl || "/JTK-night-sakura.jpg"}
+              src={keycap.cardImgUrl || "/keycaps/JTK-night-sakura.jpg"}
               status={keycap.status}
               heading={keycap.name}
+              artisan={keycap.artisan}
               href="/"
             ></Card>
           );
@@ -45,6 +46,8 @@ const query = gql`
       id
       name
       status
+      artisan
+      cardImgUrl
     }
   }
 `;

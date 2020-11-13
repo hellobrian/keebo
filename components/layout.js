@@ -20,11 +20,11 @@ export function Layout({ pageTitle, children, cardLayout = false, ...props }) {
         {...props}
       >
         <Nav sx={{ gridArea: "header" }}></Nav>
-        <Grid as="main" sx={{ gridArea: "main", height: "100vh", mt: 50 }}>
+        <Grid as="main" sx={{ gridArea: "main", height: "100%" }}>
           {cardLayout ? (
             <Grid
               sx={{
-                gridTemplateColumns: "repeat(auto-fit, minmax(500px, 1fr))",
+                gridTemplateColumns: "repeat(auto-fit, minmax(400px, 1fr))",
                 "@media screen and (max-width: 1150px)": {
                   gridTemplateColumns: "1fr",
                 },
@@ -33,7 +33,7 @@ export function Layout({ pageTitle, children, cardLayout = false, ...props }) {
                 px: 1,
                 my: 0,
                 mx: "auto",
-                maxWidth: "1200px",
+                maxWidth: "2000px",
               }}
             >
               {children}

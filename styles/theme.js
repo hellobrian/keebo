@@ -10,6 +10,8 @@ const green = "#0AD185";
 const deepRose = "#c44569";
 const linearPink = "#d9afd9";
 const linearBlue = "#97d9e1";
+const boxShadow =
+  "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.25)";
 
 const colors = {
   black,
@@ -28,6 +30,7 @@ const colors = {
   text: white,
   active: yellow,
   accent: salmon,
+  boxShadow,
   badge: {
     want: deepRose,
     default: white,

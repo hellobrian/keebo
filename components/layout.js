@@ -20,7 +20,7 @@ export function Layout({ pageTitle, children, cardLayout = false, ...props }) {
         {...props}
       >
         <Nav sx={{ gridArea: "header" }}></Nav>
-        <Grid as="main" sx={{ gridArea: "main" }}>
+        <Grid as="main" sx={{ gridArea: "main", height: "100vh", mt: 50 }}>
           {cardLayout ? (
             <Grid
               sx={{

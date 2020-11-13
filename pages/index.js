@@ -58,7 +58,7 @@ export default function Home({ data }) {
             src={keyboard.cardImgUrl}
             status={keyboard.status}
             heading={keyboard.name}
-            href="/"
+            href={`/keyboards/${keyboard.id}`}
           />
         );
       })}

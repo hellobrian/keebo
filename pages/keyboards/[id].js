@@ -30,15 +30,15 @@ export async function getStaticProps({ params }) {
       }
     }
   `;
+
   const data = await request(endpoint, query, variables);
-  console.log(data);
+
   return {
     props: { data },
   };
 }
 
 export default function Keyboard({ data }) {
-  console.log({ data });
   return (
     <Layout pageTitle={data.keyboard.name}>
       <div>

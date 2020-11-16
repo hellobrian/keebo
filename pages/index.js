@@ -1,9 +1,9 @@
-import { request, gql } from "graphql-request";
+import { request, gql } from 'graphql-request'
 
-import { Layout } from "../components/layout";
-import { Card } from "../components/Card/Card";
+import { Layout } from '../components/layout'
+import { Card } from '../components/Card/Card'
 
-const endpoint = process.env.GRAPHQL_ENDPOINT;
+const endpoint = process.env.GRAPHQL_ENDPOINT
 const query = gql`
   query {
     keyboards(sort: "name") {
@@ -17,25 +17,25 @@ const query = gql`
       }
     }
   }
-`;
+`
 
 async function getKeyboards() {
-  const data = await request(endpoint, query);
-  return data;
+  const data = await request(endpoint, query)
+  return data
 }
 
 export async function getStaticProps() {
-  const data = await getKeyboards();
+  const data = await getKeyboards()
   return {
     props: { data },
     revalidate: 1, // In seconds
-  };
+  }
 }
 
 export default function Home({ data }) {
   return (
     <Layout pageTitle="keyboards" cardLayout>
-      {data.keyboards.map((keyboard, index) => {
+      {data.keyboards.map(keyboard => {
         return (
           <Card
             key={keyboard.id}
@@ -45,8 +45,8 @@ export default function Home({ data }) {
             text={keyboard.cardText}
             href={`/keyboards/${keyboard.id}`}
           />
-        );
+        )
       })}
     </Layout>
-  );
+  )
 }

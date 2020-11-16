@@ -1,78 +1,73 @@
-import { Grid, Box, Flex, NavLink, Text, MenuButton, Close } from "theme-ui";
-import { useRouter } from "next/router";
-import Link from "next/link";
+import { useState } from 'react'
+import { Grid, Box, Flex, NavLink, Text, MenuButton, Close } from 'theme-ui'
+import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 const styles = {
-  fontFamily: "body",
+  fontFamily: 'body',
   py: 1,
   px: 2,
-};
+}
 
 const activeStyles = {
   ...styles,
-  bg: "accent",
-  color: "black",
-};
+  bg: 'accent',
+  color: 'black',
+}
 
 const Navigation = ({ router, sx = {} }) => (
-  <Flex as="ul" sx={{ justifyContent: "flex-end", ...sx }}>
-    <Box as="li" sx={{ mr: 4, px: 1, width: "fit-content" }}>
+  <Flex as="ul" sx={{ justifyContent: 'flex-end', ...sx }}>
+    <Box as="li" sx={{ mr: 4, px: 1, width: 'fit-content' }}>
       <Link href="/" passHref>
-        <NavLink sx={router.pathname === "/" ? activeStyles : styles}>
+        <NavLink sx={router.pathname === '/' ? activeStyles : styles}>
           Keyboards
         </NavLink>
       </Link>
     </Box>
-    <Box as="li" sx={{ px: 1, width: "fit-content" }}>
+    <Box as="li" sx={{ px: 1, width: 'fit-content' }}>
       <Link href="/keycaps" passHref>
-        <NavLink sx={router.pathname === "/keycaps" ? activeStyles : styles}>
+        <NavLink sx={router.pathname === '/keycaps' ? activeStyles : styles}>
           Keycaps
         </NavLink>
       </Link>
     </Box>
   </Flex>
-);
+)
 
 const ToggleMenuButton = ({ isMenuOpen = false, ...props }) => (
-  <>
-    {isMenuOpen ? (
-      <Close {...props}></Close>
-    ) : (
-      <MenuButton {...props}></MenuButton>
-    )}
-  </>
-);
+  <>{isMenuOpen ? <Close {...props} /> : <MenuButton {...props} />}</>
+)
 
 export function Nav({ sx = {} }) {
-  const router = useRouter();
-  const [isMenuOpen, setMenuOpen] = React.useState(false);
+  const router = useRouter()
+  const [isMenuOpen, setMenuOpen] = useState(false)
 
   return (
     <div
       style={{
-        position: "relative",
-        display: "grid",
+        position: 'relative',
+        display: 'grid',
       }}
     >
       <Grid
         as="header"
         sx={{
-          position: "fixed",
+          position: 'fixed',
           zIndex: 1,
-          bg: "black",
-          width: "100%",
-          gridTemplateColumns: "100px 1fr",
-          alignItems: "center",
+          bg: 'black',
+          width: '100%',
+          gridTemplateColumns: '100px 1fr',
+          alignItems: 'center',
           p: 3,
           ...sx,
         }}
       >
-        <Link href={"/"} passHref>
+        <Link href="/" passHref>
           <NavLink
             sx={{
-              fontFamily: "body",
-              display: "inline-flex",
-              alignItems: "center",
+              fontFamily: 'body',
+              display: 'inline-flex',
+              alignItems: 'center',
             }}
           >
             <Text as="span" role="img" aria-label="love" sx={{ mr: 1 }}>
@@ -86,31 +81,31 @@ export function Nav({ sx = {} }) {
           isMenuOpen={isMenuOpen}
           aria-label="Toggle Menu"
           onClick={() => {
-            setMenuOpen(!isMenuOpen);
+            setMenuOpen(!isMenuOpen)
           }}
           sx={{
-            justifySelf: "flex-end",
-            "@media screen and (min-width: 400px)": {
-              display: "none",
+            justifySelf: 'flex-end',
+            '@media screen and (min-width: 400px)': {
+              display: 'none',
             },
           }}
-        ></ToggleMenuButton>
+        />
 
         <Box
           as="nav"
           sx={{
-            "@media screen and (max-width: 400px)": {
-              display: "none",
+            '@media screen and (max-width: 400px)': {
+              display: 'none',
             },
           }}
         >
-          <Navigation router={router}></Navigation>
+          <Navigation router={router} />
         </Box>
       </Grid>
       <Box
         sx={{
-          "@media screen and (min-width: 400px)": {
-            display: "none",
+          '@media screen and (min-width: 400px)': {
+            display: 'none',
           },
         }}
       >
@@ -118,21 +113,21 @@ export function Nav({ sx = {} }) {
           <Navigation
             router={router}
             sx={{
-              position: "fixed",
+              position: 'fixed',
               top: 50,
               zIndex: 1,
-              width: "100%",
-              flexDirection: "column",
-              textAlign: "right",
+              width: '100%',
+              flexDirection: 'column',
+              textAlign: 'right',
               p: 2,
-              "& > li": {
-                width: "100%",
+              '& > li': {
+                width: '100%',
                 mb: 3,
               },
             }}
-          ></Navigation>
+          />
         )}
       </Box>
     </div>
-  );
+  )
 }

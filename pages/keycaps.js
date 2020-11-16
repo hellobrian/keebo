@@ -1,30 +1,29 @@
-import { request, gql } from "graphql-request";
-import { Grid } from "theme-ui";
+import { request, gql } from 'graphql-request'
 
-import { Layout } from "../components/layout";
-import { Card } from "../components/Card/Card";
+import { Layout } from '../components/layout'
+import { Card } from '../components/Card/Card'
 
 export default function Keycaps({ data }) {
   return (
     <Layout pageTitle="keycaps" cardLayout>
-      {data.keycaps.map((keycap) => {
+      {data.keycaps.map(keycap => {
         return (
           <Card
             key={keycap.id}
-            src={keycap.cardImgUrl || "/keycaps/JTK-night-sakura.jpg"}
+            src={keycap.cardImgUrl || '/keycaps/JTK-night-sakura.jpg'}
             status={keycap.status}
             heading={keycap.name}
             artisan={keycap.artisan}
             href={`/keycaps/${keycap.id}`}
             text={keycap.cardText}
-          ></Card>
-        );
+          />
+        )
       })}
     </Layout>
-  );
+  )
 }
 
-const endpoint = process.env.GRAPHQL_ENDPOINT;
+const endpoint = process.env.GRAPHQL_ENDPOINT
 const query = gql`
   query {
     keycaps {
@@ -36,14 +35,14 @@ const query = gql`
       cardText
     }
   }
-`;
+`
 
 export async function getStaticProps() {
-  const data = await request(endpoint, query);
+  const data = await request(endpoint, query)
 
   return {
     props: {
       data,
     },
-  };
+  }
 }

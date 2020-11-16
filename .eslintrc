@@ -1,0 +1,3 @@
+{
+  "extends": ["nextjs", "plugin:react-hooks/recommended", "prettier"]
+}

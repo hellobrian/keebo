@@ -1,6 +1,7 @@
-import { request, gql } from "graphql-request";
-import { Layout } from "../../components/layout";
-const endpoint = process.env.GRAPHQL_ENDPOINT;
+import { request, gql } from 'graphql-request'
+import { Layout } from '../../components/layout'
+
+const endpoint = process.env.GRAPHQL_ENDPOINT
 
 export async function getStaticPaths() {
   const query = gql`
@@ -9,19 +10,19 @@ export async function getStaticPaths() {
         id
       }
     }
-  `;
-  const data = await request(endpoint, query);
-  const paths = data.keyboards.map((keyboard) => {
-    return { params: { id: keyboard.id } };
-  });
+  `
+  const data = await request(endpoint, query)
+  const paths = data.keyboards.map(keyboard => {
+    return { params: { id: keyboard.id } }
+  })
 
-  return { paths, fallback: false };
+  return { paths, fallback: false }
 }
 
 export async function getStaticProps({ params }) {
   const variables = {
     id: params.id,
-  };
+  }
   const query = gql`
     query getKeyboard($id: ID!) {
       keyboard(id: $id) {
@@ -33,13 +34,13 @@ export async function getStaticProps({ params }) {
         }
       }
     }
-  `;
+  `
 
-  const data = await request(endpoint, query, variables);
+  const data = await request(endpoint, query, variables)
 
   return {
     props: { data },
-  };
+  }
 }
 
 export default function Keyboard({ data }) {
@@ -50,5 +51,5 @@ export default function Keyboard({ data }) {
         <pre>{JSON.stringify(data, null, 2)}</pre>
       </div>
     </Layout>
-  );
+  )
 }

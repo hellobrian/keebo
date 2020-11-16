@@ -1,19 +1,19 @@
-import { Flex, Badge } from "theme-ui";
+import { Flex, Badge } from 'theme-ui'
 
 export default {
-  title: "Components/Badge",
+  title: 'Components/Badge',
   component: Badge,
-};
+}
 
 export const AllBadges = () => {
   const styles = {
     mr: 1,
     mb: 1,
-  };
+  }
   return (
     <Flex
       sx={{
-        flexWrap: "wrap",
+        flexWrap: 'wrap',
       }}
     >
       <Badge sx={styles} variant="using" className="using">
@@ -32,10 +32,10 @@ export const AllBadges = () => {
         artisan
       </Badge>
     </Flex>
-  );
-};
+  )
+}
 
-export const Using = () => <Badge variant="using">using</Badge>;
-export const Purchased = () => <Badge variant="purchased">purchased</Badge>;
-export const Shelved = () => <Badge variant="shelved">shelved</Badge>;
-export const Want = () => <Badge variant="want">want</Badge>;
+export const Using = () => <Badge variant="using">using</Badge>
+export const Purchased = () => <Badge variant="purchased">purchased</Badge>
+export const Shelved = () => <Badge variant="shelved">shelved</Badge>
+export const Want = () => <Badge variant="want">want</Badge>

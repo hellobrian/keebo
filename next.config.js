@@ -1,6 +1,6 @@
 module.exports = {
-  target: "serverless",
+  target: 'serverless',
   async redirects() {
-    return [{ source: "/keyboards", destination: "/", permanent: true }];
+    return [{ source: '/keyboards', destination: '/', permanent: true }]
   },
-};
+}

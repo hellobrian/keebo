@@ -5,14 +5,14 @@ const endpoint = process.env.GRAPHQL_ENDPOINT;
 export async function getStaticPaths() {
   const query = gql`
     query {
-      keyboards {
+      keycaps {
         id
       }
     }
   `;
   const data = await request(endpoint, query);
-  const paths = data.keyboards.map((keyboard) => {
-    return { params: { id: keyboard.id } };
+  const paths = data.keycaps.map((keycap) => {
+    return { params: { id: keycap.id } };
   });
 
   return { paths, fallback: false };
@@ -23,12 +23,11 @@ export async function getStaticProps({ params }) {
     id: params.id,
   };
   const query = gql`
-    query getKeyboard($id: ID!) {
-      keyboard(id: $id) {
+    query getKeycap($id: ID!) {
+      keycap(id: $id) {
         id
         name
-        keycaps {
-          id
+        keyboard {
           name
         }
       }
@@ -42,11 +41,11 @@ export async function getStaticProps({ params }) {
   };
 }
 
-export default function Keyboard({ data }) {
+export default function Keycap({ data }) {
   return (
-    <Layout pageTitle={data.keyboard.name}>
+    <Layout pageTitle={data.keycap.name}>
       <div>
-        <h1>{data.keyboard.name}</h1>
+        <h1>{data.keycap.name}</h1>
         <pre>{JSON.stringify(data, null, 2)}</pre>
       </div>
     </Layout>

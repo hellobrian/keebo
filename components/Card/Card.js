@@ -50,7 +50,7 @@ function useHover() {
 export function Card({
   src = TEMP_IMG,
   heading = "Drop Ctrl High-Profile",
-  text = LOREM_IPSUM,
+  text,
   status = "purchased",
   href = "/",
   artisan = false,
@@ -137,7 +137,7 @@ export function Card({
             color: "text",
           }}
         >
-          {text}
+          {text || LOREM_IPSUM}
         </Text>
         <Link href={href} passHref>
           <CardLink

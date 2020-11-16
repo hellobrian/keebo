@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { Nav } from "./Nav/Nav";
-import { Grid } from "theme-ui";
+import { Box, Grid } from "theme-ui";
 
 export function Layout({ pageTitle, children, cardLayout = false, ...props }) {
   return (
@@ -39,7 +39,18 @@ export function Layout({ pageTitle, children, cardLayout = false, ...props }) {
               {children}
             </Grid>
           ) : (
-            children
+            <Box
+              sx={{
+                height: "100%",
+                fontSize: 6,
+                py: 6,
+                px: 1,
+                my: 0,
+                mx: "auto",
+              }}
+            >
+              {children}
+            </Box>
           )}
         </Grid>
       </Grid>

@@ -15,7 +15,8 @@ export default function Keycaps({ data }) {
             status={keycap.status}
             heading={keycap.name}
             artisan={keycap.artisan}
-            href="/"
+            href={`/keycaps/${keycap.id}`}
+            text={keycap.cardText}
           ></Card>
         );
       })}
@@ -32,6 +33,7 @@ const query = gql`
       status
       artisan
       cardImgUrl
+      cardText
     }
   }
 `;

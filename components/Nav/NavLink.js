@@ -1,25 +1,25 @@
-import { NavLink as ThemeLink } from "theme-ui";
+import { NavLink as ThemeLink } from 'theme-ui'
 
 export function NavLink({
-  href = "",
+  href = '',
   isActive = false,
   children,
-  variant = "nav",
+  variant = 'nav',
 }) {
   const activeStyles = {
-    borderBottomWidth: "4px",
-    borderBlockEndStyle: "solid",
-    borderBottomColor: "active",
-  };
+    borderBottomWidth: '4px',
+    borderBlockEndStyle: 'solid',
+    borderBottomColor: 'active',
+  }
 
   const styles = {
-    textDecoration: "none",
-    fontWeight: "normal",
-    borderBottomWidth: "4px",
-    borderBottomColor: "transparent",
+    textDecoration: 'none',
+    fontWeight: 'normal',
+    borderBottomWidth: '4px',
+    borderBottomColor: 'transparent',
     fontSize: 4,
-    width: "fit-content",
-  };
+    width: 'fit-content',
+  }
 
   return (
     <ThemeLink
@@ -29,5 +29,5 @@ export function NavLink({
     >
       {children}
     </ThemeLink>
-  );
+  )
 }

@@ -1,6 +1,7 @@
-import { request, gql } from "graphql-request";
-import { Layout } from "../../components/layout";
-const endpoint = process.env.GRAPHQL_ENDPOINT;
+import { request, gql } from 'graphql-request'
+import { Layout } from '../../components/layout'
+
+const endpoint = process.env.GRAPHQL_ENDPOINT
 
 export async function getStaticPaths() {
   const query = gql`
@@ -9,19 +10,19 @@ export async function getStaticPaths() {
         id
       }
     }
-  `;
-  const data = await request(endpoint, query);
-  const paths = data.keycaps.map((keycap) => {
-    return { params: { id: keycap.id } };
-  });
+  `
+  const data = await request(endpoint, query)
+  const paths = data.keycaps.map(keycap => {
+    return { params: { id: keycap.id } }
+  })
 
-  return { paths, fallback: false };
+  return { paths, fallback: false }
 }
 
 export async function getStaticProps({ params }) {
   const variables = {
     id: params.id,
-  };
+  }
   const query = gql`
     query getKeycap($id: ID!) {
       keycap(id: $id) {
@@ -32,13 +33,13 @@ export async function getStaticProps({ params }) {
         }
       }
     }
-  `;
+  `
 
-  const data = await request(endpoint, query, variables);
+  const data = await request(endpoint, query, variables)
 
   return {
     props: { data },
-  };
+  }
 }
 
 export default function Keycap({ data }) {
@@ -49,5 +50,5 @@ export default function Keycap({ data }) {
         <pre>{JSON.stringify(data, null, 2)}</pre>
       </div>
     </Layout>
-  );
+  )
 }

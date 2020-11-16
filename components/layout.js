@@ -1,6 +1,6 @@
-import Head from "next/head";
-import { Nav } from "./Nav/Nav";
-import { Box, Grid } from "theme-ui";
+import Head from 'next/head'
+import { Box, Grid } from 'theme-ui'
+import { Nav } from './Nav/Nav'
 
 export function Layout({ pageTitle, children, cardLayout = false, ...props }) {
   return (
@@ -19,21 +19,21 @@ export function Layout({ pageTitle, children, cardLayout = false, ...props }) {
         }}
         {...props}
       >
-        <Nav sx={{ gridArea: "header" }}></Nav>
-        <Grid as="main" sx={{ gridArea: "main", height: "100%" }}>
+        <Nav sx={{ gridArea: 'header' }} />
+        <Grid as="main" sx={{ gridArea: 'main', height: '100%' }}>
           {cardLayout ? (
             <Grid
               sx={{
-                gridTemplateColumns: "repeat(auto-fit, minmax(400px, 1fr))",
-                "@media screen and (max-width: 1150px)": {
-                  gridTemplateColumns: "1fr",
+                gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
+                '@media screen and (max-width: 1150px)': {
+                  gridTemplateColumns: '1fr',
                 },
                 gridGap: 4,
                 py: 6,
                 px: 1,
                 my: 0,
-                mx: "auto",
-                maxWidth: "2000px",
+                mx: 'auto',
+                maxWidth: '2000px',
               }}
             >
               {children}
@@ -41,12 +41,12 @@ export function Layout({ pageTitle, children, cardLayout = false, ...props }) {
           ) : (
             <Box
               sx={{
-                height: "100%",
+                height: '100%',
                 fontSize: 6,
                 py: 6,
                 px: 1,
                 my: 0,
-                mx: "auto",
+                mx: 'auto',
               }}
             >
               {children}
@@ -55,5 +55,5 @@ export function Layout({ pageTitle, children, cardLayout = false, ...props }) {
         </Grid>
       </Grid>
     </>
-  );
+  )
 }

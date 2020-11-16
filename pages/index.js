@@ -1,24 +1,7 @@
 import { request, gql } from "graphql-request";
-import { Grid } from "theme-ui";
 
 import { Layout } from "../components/layout";
 import { Card } from "../components/Card/Card";
-
-// const layoutText = (text) => {
-//   switch (text) {
-//     case "seventy_five":
-//       return "75%";
-
-//     case "sixty_five":
-//       return "65%";
-
-//     case "sixty":
-//       return "60%";
-
-//     default:
-//       return text;
-//   }
-// };
 
 const endpoint = process.env.GRAPHQL_ENDPOINT;
 const query = gql`
@@ -28,6 +11,7 @@ const query = gql`
       name
       status
       cardImgUrl
+      cardText
       pcb {
         pins
       }
@@ -58,7 +42,8 @@ export default function Home({ data }) {
             src={keyboard.cardImgUrl}
             status={keyboard.status}
             heading={keyboard.name}
-            href="/"
+            text={keyboard.cardText}
+            href={`/keyboards/${keyboard.id}`}
           />
         );
       })}

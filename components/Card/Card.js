@@ -41,43 +41,44 @@ function useHover() {
     transitionTimingFunction,
   };
 
-  return { isHover, setHover, opacityStyles, scaleStyles };
+  const hoverOn = () => setHover(true);
+  const hoverOff = () => setHover(false);
+
+  return { isHover, setHover, opacityStyles, scaleStyles, hoverOn, hoverOff };
 }
 
 export function Card({
   src = TEMP_IMG,
   heading = "Drop Ctrl High-Profile",
-  text = LOREM_IPSUM,
+  text,
   status = "purchased",
   href = "/",
   artisan = false,
 }) {
-  const { setHover, scaleStyles } = useHover();
+  const { hoverOn, hoverOff, scaleStyles } = useHover();
   const { theme } = useThemeUI();
-  const boxShadow =
-    "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.25)";
 
   return (
     <Grid
       sx={{
         borderRadius: 1,
-        boxShadow,
+        boxShadow: "boxShadow",
         bg: "black",
         gridTemplateColumns: "1fr",
         borderTop: ["none", "none", `8px solid ${theme.colors.badge[status]}`],
       }}
     >
-      <AspectRatio ratio={16 / 9}>
+      <AspectRatio ratio={16 / 10}>
         <Link href={href} passHref>
           <a aria-label={`click here to learn more about ${heading}`}>
             <Image
               role="presentation"
               quality={70}
-              onMouseEnter={() => setHover(true)}
-              onMouseLeave={() => setHover(false)}
+              onMouseEnter={hoverOn}
+              onMouseLeave={hoverOff}
               src={src}
               width={800}
-              height={450}
+              height={500}
               sx={{
                 width: "100%",
                 height: "100%",
@@ -101,8 +102,8 @@ export function Card({
           <a style={{ textDecoration: "none" }}>
             <Heading
               variant="h2"
-              onMouseEnter={() => setHover(true)}
-              onMouseLeave={() => setHover(false)}
+              onMouseEnter={hoverOn}
+              onMouseLeave={hoverOff}
               sx={{
                 mb: 3,
                 bg: "black",
@@ -136,13 +137,13 @@ export function Card({
             color: "text",
           }}
         >
-          {text}
+          {text || LOREM_IPSUM}
         </Text>
         <Link href={href} passHref>
           <CardLink
             color={theme.colors.badge[status]}
-            onMouseEnter={() => setHover(true)}
-            onMouseLeave={() => setHover(false)}
+            onMouseEnter={hoverOn}
+            onMouseLeave={hoverOff}
           >
             Read more.
           </CardLink>

@@ -43,22 +43,21 @@ export function Card({
       }}
     >
       <AspectRatio ratio={16 / 9}>
-        <Link href={href} passHref>
-          <a aria-label={`click here to learn more about ${heading}`}>
-            <Image
-              role="presentation"
-              quality={70}
-              src={src}
-              width={800}
-              height={500}
-              sx={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-              }}
-            />
-          </a>
-        </Link>
+        <Image
+          role="presentation"
+          quality={70}
+          src={src}
+          width={800}
+          height={500}
+          sx={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            ":hover": {
+              cursor: "zoom-in",
+            },
+          }}
+        />
       </AspectRatio>
       <Flex
         sx={{

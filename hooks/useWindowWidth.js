@@ -19,7 +19,13 @@ export function useWindowWidth(intialWidth = 0) {
     window.addEventListener('resize', handleResize)
 
     return () => {
-      window.removeEventListener('resize', handleResize)
+      window.
+      
+      
+      
+      
+      
+      removeEventListener('resize', handleResize)
     }
   })
 

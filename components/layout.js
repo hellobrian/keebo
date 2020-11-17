@@ -6,7 +6,7 @@ export function Layout({ pageTitle, children, cardLayout = false, ...props }) {
   return (
     <>
       <Head>
-        <title>Keebs | {pageTitle}</title>
+        <title>Keebo | {pageTitle}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Grid

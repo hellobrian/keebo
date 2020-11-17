@@ -53,7 +53,7 @@ export function Nav({ sx = {} }) {
         as="header"
         sx={{
           position: 'fixed',
-          zIndex: 1,
+          zIndex: 1000,
           bg: 'black',
           width: '100%',
           gridTemplateColumns: '100px 1fr',

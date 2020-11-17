@@ -15,12 +15,16 @@ const LOREM_IPSUM = `Lorem, ipsum dolor sit amet consectetur adipisicing elit. I
 export function Card({
   src = TEMP_IMG,
   heading = 'Drop Ctrl High-Profile',
-  text,
+  text = LOREM_IPSUM,
   status = 'purchased',
   href = '/',
   artisan = false,
 }) {
   const { theme } = useThemeUI()
+  let limitedText = ''
+  if (text) {
+    limitedText = text.split(' ').slice(0, 30)
+  }
 
   return (
     <Grid
@@ -29,6 +33,7 @@ export function Card({
         boxShadow: 'boxShadow',
         bg: 'black',
         gridTemplateColumns: '1fr',
+        gridTemplateRows: '250px 1fr',
         borderTop: ['none', 'none', `8px solid ${theme.colors.badge[status]}`],
       }}
     >
@@ -82,7 +87,7 @@ export function Card({
             color: 'text',
           }}
         >
-          {text || LOREM_IPSUM}
+          {[...limitedText, '...'].join(' ') || LOREM_IPSUM}
         </Text>
         <Link href={href} passHref>
           <CardLink

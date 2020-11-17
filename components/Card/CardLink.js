@@ -16,11 +16,13 @@ export const CardLink = React.forwardRef(
         as="a"
         href={href}
         sx={{
+          display: 'flex',
           textDecoration: 'none',
           width: 'fit-content',
           color: 'text',
           fontFamily: 'body',
           fontWeight: 'normal',
+          justifySelf: 'flex-end',
           ...underline,
         }}
         {...props}

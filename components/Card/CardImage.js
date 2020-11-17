@@ -30,6 +30,7 @@ export function CardImage({ heading, src }) {
   const ModalImage = (
     <Flex
       sx={{
+        position: 'relative',
         maxWidth: '1920',
         border: '16px solid white',
         bg: 'white',

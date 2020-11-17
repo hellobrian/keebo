@@ -52,7 +52,9 @@ function ModalContent({ children, closeModal }) {
       data-testid="modal-content"
       ref={modalContentRef}
       sx={{
-        maxWidth: '90%',
+        maxWidth: '1920px',
+        m: '0 auto',
+        flexDirection: 'row-reverse',
       }}
     >
       {children}
@@ -126,11 +128,11 @@ export function Modal() {
             data-testid="modal-close-button"
             sx={{
               position: 'fixed',
-              top: '108px',
-              right: '32px',
-              zIndex: 100,
+              bg: 'white',
+              color: 'black',
+              zIndex: 1000,
             }}
-            onClick={() => handleModal()}
+            onClick={handleModal}
           />
           {modalContent}
         </ModalContent>

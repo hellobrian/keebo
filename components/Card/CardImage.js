@@ -3,7 +3,7 @@ import { Flex, Image, AspectRatio, Box } from 'theme-ui'
 
 import { ModalContext } from '../Modal/Modal'
 
-export function CardImage({ heading, src, color }) {
+export function CardImage({ heading, src }) {
   const HOVER_STATES = {
     initial: 0,
     on: 1,
@@ -38,10 +38,9 @@ export function CardImage({ heading, src, color }) {
       <Box
         className={opacityClassName}
         sx={{
-          opacity: 0,
-          backgroundImage: `linear-gradient(25deg, transparent, ${color})`,
+          opacity: 0.01,
+          bg: 'white',
           position: 'absolute',
-          top: 0,
           width: '100%',
           height: '100%',
           zIndex: 1,

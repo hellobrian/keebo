@@ -73,7 +73,7 @@ export function Nav({ sx = {} }) {
             <Text as="span" role="img" aria-label="love" sx={{ mr: 1 }}>
               🙌
             </Text>
-            Keebs
+            Keebo
           </NavLink>
         </Link>
 

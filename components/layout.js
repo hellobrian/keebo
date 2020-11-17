@@ -1,12 +1,16 @@
 import Head from 'next/head'
+import { NextSeo } from 'next-seo'
 import { Box, Grid } from 'theme-ui'
 import { Nav } from './Nav/Nav'
 
 export function Layout({ pageTitle, children, cardLayout = false, ...props }) {
   return (
     <>
+      <NextSeo
+        title={`Keebo | ${pageTitle}`}
+        description={`A website that showcases Brian Han's keyboard collection.`}
+      />
       <Head>
-        <title>Keebo | {pageTitle}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Grid

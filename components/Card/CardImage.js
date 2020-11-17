@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react'
-import { Flex, Image, AspectRatio, Box } from 'theme-ui'
+import { Flex, Image as ThemeImage, AspectRatio, Box } from 'theme-ui'
+import Image from 'next/image'
 
 import { ModalContext } from '../Modal/Modal'
 
@@ -47,7 +48,8 @@ export function CardImage({ heading, src }) {
           pointerEvents: 'none',
         }}
       />
-      <Image
+      <ThemeImage
+        as={Image}
         className={zoomClassName}
         onClick={() =>
           handleModal(
@@ -58,7 +60,8 @@ export function CardImage({ heading, src }) {
                 bg: 'white',
               }}
             >
-              <Image
+              <ThemeImage
+                as={Image}
                 data-testid="modal-image"
                 alt={heading}
                 src={src}

@@ -4,18 +4,10 @@ import Link from 'next/link'
 import { CardLink } from './CardLink'
 import { CardImage } from './CardImage'
 
-const TEMP_IMG =
-  'https://i1.wp.com/tokyokeyboard.com/wp-content/uploads/2019/10/hcStZW2-1.jpg?fit=2340%2C1073'
-
-const LOREM_IPSUM = `Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illo
-  reiciendis culpa dolore quo voluptatum tempore omnis fugiat ipsam
-  error delectus odit dolores reprehenderit quasi at, accusantium saepe
-  nihil, soluta consequatur?`
-
 export function Card({
-  src = TEMP_IMG,
+  src,
   heading = 'Drop Ctrl High-Profile',
-  text = LOREM_IPSUM,
+  text,
   status = 'purchased',
   href = '/',
   artisan = false,
@@ -87,7 +79,7 @@ export function Card({
             color: 'text',
           }}
         >
-          {[...limitedText, '...'].join(' ') || LOREM_IPSUM}
+          {[...limitedText, '...'].join(' ')}
         </Text>
         <Link href={href} passHref>
           <CardLink

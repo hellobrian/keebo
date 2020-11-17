@@ -18,3 +18,67 @@ body {
 a {
   text-decoration: none;
 }
+
+@keyframes animateOpacity {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 0.15;
+  }
+}
+
+@keyframes animateOpacityReverse {
+  from {
+    opacity: 0.15;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.animate-opacity {
+  animation-duration: 200ms;
+  animation-name: animateOpacity;
+  animation-fill-mode: forwards;
+}
+
+.animate-opacity-reverse {
+  animation-duration: 200ms;
+  animation-name: animateOpacityReverse;
+  animation-fill-mode: forwards;
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes zoomOut {
+  from {
+    transform: scale(1.1);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+.animate-zoom-in {
+  animation-duration: 200ms;
+  animation-name: zoomIn;
+  animation-fill-mode: forwards;
+}
+
+.animate-zoom-out {
+  animation-duration: 200ms;
+  animation-name: zoomOut;
+  animation-fill-mode: forwards;
+}

@@ -1,18 +1,8 @@
-import { useContext } from 'react'
-import {
-  Grid,
-  Flex,
-  Image,
-  Heading,
-  AspectRatio,
-  Badge,
-  Text,
-  useThemeUI,
-} from 'theme-ui'
+import { Grid, Flex, Heading, Badge, Text, useThemeUI } from 'theme-ui'
 
 import Link from 'next/link'
-import { ModalContext } from '../Modal/Modal'
 import { CardLink } from './CardLink'
+import { CardImage } from './CardImage'
 
 const TEMP_IMG =
   'https://i1.wp.com/tokyokeyboard.com/wp-content/uploads/2019/10/hcStZW2-1.jpg?fit=2340%2C1073'
@@ -31,7 +21,6 @@ export function Card({
   artisan = false,
 }) {
   const { theme } = useThemeUI()
-  const { handleModal } = useContext(ModalContext)
 
   return (
     <Grid
@@ -43,42 +32,11 @@ export function Card({
         borderTop: ['none', 'none', `8px solid ${theme.colors.badge[status]}`],
       }}
     >
-      <AspectRatio ratio={16 / 9}>
-        <Image
-          onClick={() =>
-            handleModal(
-              <Flex
-                sx={{
-                  maxWidth: '1920',
-                  border: '16px solid white',
-                  bg: 'white',
-                }}
-              >
-                <Image
-                  data-testid="modal-image"
-                  alt={heading}
-                  src={src}
-                  width={1920}
-                  height={1080}
-                />
-              </Flex>
-            )
-          }
-          alt={heading}
-          src={src}
-          width={800}
-          height={500}
-          sx={{
-            bg: 'white',
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            ':hover': {
-              cursor: 'zoom-in',
-            },
-          }}
-        />
-      </AspectRatio>
+      <CardImage
+        heading={heading}
+        src={src}
+        color={theme.colors.badge[status]}
+      />
       <Flex
         sx={{
           pt: 3,

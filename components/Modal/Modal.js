@@ -126,8 +126,9 @@ export function Modal() {
             data-testid="modal-close-button"
             sx={{
               position: 'fixed',
-              top: 4,
-              right: 4,
+              top: '108px',
+              right: '32px',
+              zIndex: 100,
             }}
             onClick={() => handleModal()}
           />

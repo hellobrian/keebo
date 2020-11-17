@@ -19,16 +19,11 @@ const query = gql`
   }
 `
 
-async function getKeyboards() {
-  const data = await request(endpoint, query)
-  return data
-}
-
 export async function getStaticProps() {
-  const data = await getKeyboards()
+  const data = await request(endpoint, query)
   return {
     props: { data },
-    revalidate: 1, // In seconds
+    revalidate: 1,
   }
 }
 

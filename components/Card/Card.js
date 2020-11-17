@@ -43,7 +43,6 @@ export function Card({
           px: 4,
           pb: 4,
           flexDirection: 'column',
-          justifyContent: 'center',
         }}
       >
         <Link href={href} passHref>

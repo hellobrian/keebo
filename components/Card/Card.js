@@ -4,16 +4,8 @@ import Link from 'next/link'
 import { CardLink } from './CardLink'
 import { CardImage } from './CardImage'
 
-const TEMP_IMG =
-  'https://i1.wp.com/tokyokeyboard.com/wp-content/uploads/2019/10/hcStZW2-1.jpg?fit=2340%2C1073'
-
-const LOREM_IPSUM = `Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illo
-  reiciendis culpa dolore quo voluptatum tempore omnis fugiat ipsam
-  error delectus odit dolores reprehenderit quasi at, accusantium saepe
-  nihil, soluta consequatur?`
-
 export function Card({
-  src = TEMP_IMG,
+  src,
   heading = 'Drop Ctrl High-Profile',
   text,
   status = 'purchased',
@@ -21,6 +13,10 @@ export function Card({
   artisan = false,
 }) {
   const { theme } = useThemeUI()
+  let limitedText = ''
+  if (text) {
+    limitedText = text.split(' ').slice(0, 30)
+  }
 
   return (
     <Grid
@@ -29,6 +25,7 @@ export function Card({
         boxShadow: 'boxShadow',
         bg: 'black',
         gridTemplateColumns: '1fr',
+        gridTemplateRows: '250px 1fr',
         borderTop: ['none', 'none', `8px solid ${theme.colors.badge[status]}`],
       }}
     >
@@ -82,7 +79,7 @@ export function Card({
             color: 'text',
           }}
         >
-          {text || LOREM_IPSUM}
+          {[...limitedText, '...'].join(' ')}
         </Text>
         <Link href={href} passHref>
           <CardLink

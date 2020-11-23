@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Grid, Box, Flex, NavLink, Text, MenuButton, Close } from 'theme-ui'
+import { Grid, Box, Flex, NavLink, MenuButton, Close } from 'theme-ui'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 
@@ -54,9 +54,9 @@ export function Nav({ sx = {} }) {
         sx={{
           position: 'fixed',
           zIndex: 1000,
-          bg: 'black',
+          bg: 'transparent',
           width: '100%',
-          gridTemplateColumns: '100px 1fr',
+          gridTemplateColumns: '400px 1fr',
           alignItems: 'center',
           p: 3,
           ...sx,
@@ -65,15 +65,14 @@ export function Nav({ sx = {} }) {
         <Link href="/" passHref>
           <NavLink
             sx={{
-              fontFamily: 'body',
+              fontFamily: 'display',
               display: 'inline-flex',
               alignItems: 'center',
+              fontSize: 6,
+              color: 'black',
             }}
           >
-            <Text as="span" role="img" aria-label="love" sx={{ mr: 1 }}>
-              🙌
-            </Text>
-            Keebo
+            Plastic Love
           </NavLink>
         </Link>
 

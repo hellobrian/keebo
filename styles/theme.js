@@ -85,6 +85,8 @@ export default {
   colors,
   radii: ['0', '4px'],
   fonts: {
+    profile: `Raleway, sans-serif`,
+    display: `Supermercado One, cursive;`,
     heading: `Source Serif Pro, serif`,
     body: `IBM Plex Sans, sans-serif`,
     monospace: `IBM Plex Mono, monospace`,

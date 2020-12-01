@@ -87,7 +87,8 @@ export default {
   fonts: {
     profile: `Raleway, sans-serif`,
     display: `Supermercado One, cursive;`,
-    heading: `Source Serif Pro, serif`,
+    // heading: `Source Serif Pro, serif`,
+    heading: `Raleway, sans-serif`,
     body: `IBM Plex Sans, sans-serif`,
     monospace: `IBM Plex Mono, monospace`,
     badge: `Karla, sans-serif`,

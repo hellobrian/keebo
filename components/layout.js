@@ -7,7 +7,7 @@ export function Layout({ pageTitle, children, cardLayout = false, ...props }) {
   return (
     <>
       <NextSeo
-        title={`Keebo | ${pageTitle}`}
+        title={`P L A S T I C ❤ | ${pageTitle}`}
         description={`A website that showcases Brian Han's keyboard collection.`}
       />
       <Head>

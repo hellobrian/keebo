@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react'
-import { Flex, Image as ThemeImage, AspectRatio } from 'theme-ui'
+import { Flex, Image as ThemeImage } from 'theme-ui'
 import Image from 'next/image'
 
 import { ModalContext } from '../Modal/Modal'
@@ -31,7 +31,7 @@ export function CardImage({ heading, src }) {
     <Flex
       sx={{
         position: 'relative',
-        maxWidth: '1920',
+        width: '100%',
         border: '16px solid white',
         bg: 'white',
       }}
@@ -45,35 +45,32 @@ export function CardImage({ heading, src }) {
         height={1080}
         sx={{
           objectFit: 'cover',
+          width: '100%',
         }}
       />
     </Flex>
   )
 
   return (
-    <AspectRatio
-      ratio={16 / 9}
+    <ThemeImage
       onMouseEnter={() => setHover(HOVER_STATES.on)}
       onMouseLeave={() => setHover(HOVER_STATES.off)}
-    >
-      <ThemeImage
-        as={Image}
-        className={zoomClassName}
-        onClick={() => handleModal(ModalImage)}
-        alt={heading}
-        src={src}
-        width={1100}
-        height={600}
-        sx={{
-          bg: 'white',
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-          ':hover': {
-            cursor: 'zoom-in',
-          },
-        }}
-      />
-    </AspectRatio>
+      as={Image}
+      className={zoomClassName}
+      onClick={() => handleModal(ModalImage)}
+      alt={heading}
+      src={src}
+      width={1600}
+      height={900}
+      sx={{
+        bg: 'white',
+        width: '100%',
+        height: '100%',
+        objectFit: 'cover',
+        ':hover': {
+          cursor: 'zoom-in',
+        },
+      }}
+    />
   )
 }

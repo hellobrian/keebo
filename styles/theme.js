@@ -140,7 +140,7 @@ export default {
   links: {
     nav: {
       fontFamily: 'body',
-      color: 'text',
+      color: 'white',
       fontSize: 3,
     },
   },

@@ -1,10 +1,11 @@
-import { useState } from 'react'
-import { Grid, Box, Flex, NavLink, MenuButton, Close } from 'theme-ui'
+import { Grid, Box, Flex, NavLink } from 'theme-ui'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 
 const styles = {
-  fontFamily: 'body',
+  fontFamily: 'heading',
+  textTransform: 'uppercase',
+  letterSpacing: '1px',
   py: 1,
   px: 2,
 }
@@ -16,7 +17,17 @@ const activeStyles = {
 }
 
 const Navigation = ({ router, sx = {} }) => (
-  <Flex as="ul" sx={{ justifyContent: 'flex-end', ...sx }}>
+  <Flex
+    as="ul"
+    sx={{
+      justifyContent: 'flex-end',
+
+      '@media screen and (max-width: 768px)': {
+        flexDirection: 'column',
+      },
+      ...sx,
+    }}
+  >
     <Box as="li" sx={{ mr: 4, px: 1, width: 'fit-content' }}>
       <Link href="/" passHref>
         <NavLink sx={router.pathname === '/' ? activeStyles : styles}>
@@ -34,99 +45,48 @@ const Navigation = ({ router, sx = {} }) => (
   </Flex>
 )
 
-const ToggleMenuButton = ({ isMenuOpen = false, ...props }) => (
-  <>{isMenuOpen ? <Close {...props} /> : <MenuButton {...props} />}</>
-)
-
 export function Nav({ sx = {} }) {
   const router = useRouter()
-  const [isMenuOpen, setMenuOpen] = useState(false)
 
   return (
-    <div
-      style={{
-        position: 'relative',
-        display: 'grid',
+    <Grid
+      as="header"
+      sx={{
+        bg: 'black',
+        width: '100%',
+        mx: 'auto',
+        gridTemplateColumns: '400px 1fr',
+        alignItems: 'center',
+        p: 3,
+        '@media screen and (max-width: 768px)': {
+          gridTemplateColumns: '1fr',
+        },
+        ...sx,
       }}
     >
-      <Grid
-        as="header"
-        sx={{
-          position: 'fixed',
-          zIndex: 1000,
-          bg: 'transparent',
-          width: '100%',
-          gridTemplateColumns: '400px 1fr',
-          alignItems: 'center',
-          p: 3,
-          ...sx,
-        }}
-      >
-        <Link href="/" passHref>
-          <NavLink
-            sx={{
-              fontFamily: 'display',
-              display: 'inline-flex',
-              alignItems: 'center',
-              fontSize: 6,
-              color: 'black',
-            }}
-          >
-            Plastic Love
-          </NavLink>
-        </Link>
-
-        <ToggleMenuButton
-          isMenuOpen={isMenuOpen}
-          aria-label="Toggle Menu"
-          onClick={() => {
-            setMenuOpen(!isMenuOpen)
-          }}
+      <Link href="/" passHref>
+        <NavLink
           sx={{
-            justifySelf: 'flex-end',
-            '@media screen and (min-width: 400px)': {
-              display: 'none',
-            },
-          }}
-        />
-
-        <Box
-          as="nav"
-          sx={{
-            '@media screen and (max-width: 400px)': {
-              display: 'none',
-            },
+            fontFamily: 'heading',
+            display: 'inline-flex',
+            gridGap: 0,
+            fontSize: 6,
+            bg: 'black',
+            color: 'white',
+            textTransform: 'uppercase',
+            letterSpacing: '2px',
+            flexWrap: 'wrap',
+            width: 'fit-content',
+            p: 2,
           }}
         >
-          <Navigation router={router} />
-        </Box>
-      </Grid>
-      <Box
-        sx={{
-          '@media screen and (min-width: 400px)': {
-            display: 'none',
-          },
-        }}
-      >
-        {isMenuOpen && (
-          <Navigation
-            router={router}
-            sx={{
-              position: 'fixed',
-              top: 50,
-              zIndex: 1,
-              width: '100%',
-              flexDirection: 'column',
-              textAlign: 'right',
-              p: 2,
-              '& > li': {
-                width: '100%',
-                mb: 3,
-              },
-            }}
-          />
-        )}
+          Plastic Love
+        </NavLink>
+      </Link>
+
+      <Box as="nav">
+        <Navigation router={router} />
       </Box>
-    </div>
+    </Grid>
   )
 }

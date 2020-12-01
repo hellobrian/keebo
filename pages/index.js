@@ -30,12 +30,15 @@ export async function getStaticProps() {
 export default function Home({ data }) {
   return (
     <Layout pageTitle="keyboards">
+      {/* USING */}
       <Grid
         sx={{
-          // gridTemplateColumns: 'repeat(auto-fit, minmax(700px, 1fr))',
           gridTemplateColumns: 'repeat(5, 1fr)',
           maxWidth: '2000px',
           mb: 5,
+          '@media screen and (max-width: 1000px)': {
+            gridTemplateColumns: '1fr',
+          },
         }}
       >
         {data.keyboards
@@ -53,6 +56,7 @@ export default function Home({ data }) {
             />
           ))}
       </Grid>
+      {/* WANT */}
       <Grid
         sx={{
           gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
@@ -72,11 +76,19 @@ export default function Home({ data }) {
             />
           ))}
       </Grid>
+
+      {/* PURCHASED */}
       <Grid
         sx={{
           gridTemplateColumns: '1fr 1fr 1fr',
-          gridGap: 4,
+          gridGap: 3,
           maxWidth: '2000px',
+          '@media screen and (max-width: 1300px)': {
+            gridTemplateColumns: '1fr 1fr',
+          },
+          '@media screen and (max-width: 1024px)': {
+            gridTemplateColumns: '1fr',
+          },
         }}
       >
         {data.keyboards

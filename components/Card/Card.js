@@ -20,6 +20,8 @@ export function Card({
     limitedText = text.split(' ').slice(0, 30)
   }
 
+  const headingFontSize = 7
+
   return (
     <Grid
       sx={{
@@ -29,6 +31,9 @@ export function Card({
         gridTemplateColumns: '1fr',
         gridTemplateRows: layout === 'using' ? '500px 1fr' : '1fr',
         borderTop: ['none', 'none', `8px solid ${theme.colors.badge[status]}`],
+        '@media screen and (max-width: 768px)': {
+          gridTemplateRows: layout === 'using' && '300px 1fr',
+        },
         ...sx,
       }}
     >
@@ -73,7 +78,11 @@ export function Card({
                 width: 'fit-content',
                 textTransform: 'uppercase',
                 letterSpacing: '1px',
-                fontSize: 7,
+                fontSize:
+                  layout === 'using' ? headingFontSize : headingFontSize - 2,
+                '@media screen and (max-width: 768px)': {
+                  fontSize: headingFontSize - 2,
+                },
               }}
             >
               {heading}
